@@ -30,14 +30,15 @@ public class encoder {
           //   System.out.println(" ");
           // }
         }
-        System.out.println("");
+        // System.out.println("");
       }
       debugger(LSFR1,start1);
       debugger(LSFR2,start2);
       debugger(LSFR3,start3);
       System.out.println(" ");
 
-      System.out.println(maj(true, true, false));
+      // Registers result = clock(LSFR1, LSFR2, LSFR3, start1, start2, start3);
+      Registers result = clock(new boolean[]{true,true,false,true,false,true,true,false,true,false,false,true,true,true,true,false,false,true,true}, new boolean[]{false,false,true,false,false,true,false,false,true,false,true,false,false,true,true,true,true,true,false,false,false,true}, new boolean[]{true,true,true,true,false,true,false,false,false,false,false,true,false,false,true,false,true,false,false,false,true,true,true},0,0,0);
       return "";
     }
 
@@ -50,8 +51,48 @@ public class encoder {
       return ones > zeros;
     }
 
-    public static boolean[] clock(boolean[] LSFR1, boolean[] LSFR2, boolean[] LSFR3) {
-      return new boolean[1];
+    private static class Registers {
+      boolean[] LSFR1;
+      boolean[] LSFR2;
+      boolean[] LSFR3;
+      int start1, start2, start3;
+      public Registers() {
+        this.LSFR1 = new boolean[19];
+        this.LSFR2 = new boolean[22];
+        this.LSFR3 = new boolean[23];
+      }
+    }
+
+    public static Registers clock(boolean[] LSFR1, boolean[] LSFR2, boolean[] LSFR3, int start1, int start2, int start3) {
+      debugger(LSFR1, start1);
+      debugger(LSFR2, start2);
+      debugger(LSFR3, start3);
+      Registers result = new Registers();
+      for (int i = 0; i < 100; i++) {
+
+      }
+      boolean clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
+      boolean clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
+      boolean clock3 = LSFR3[Math.floorMod(start3 + 7, 23)];
+      boolean maj_bit = maj(clock1, clock2, clock3);
+      System.out.println(maj_bit);
+      if (clock1 == maj_bit) {
+        LSFR1[Math.floorMod(start1-1,19)] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+        start1 = Math.floorMod(start1-1,19);
+      }
+      if (clock2 == maj_bit) {
+        LSFR2[Math.floorMod(start2-1,22)] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+        start2 = Math.floorMod(start2-1,22);
+      }
+      if (clock3 == maj_bit) {
+        LSFR3[Math.floorMod(start3-1,23)] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+        start3 = Math.floorMod(start3-1,23);
+      }
+      debugger(LSFR1, start1);
+      debugger(LSFR2, start2);
+      debugger(LSFR3, start3);
+
+      return result;
     }
 
     public static void debugger(boolean[] LSFR1, int start1) {
