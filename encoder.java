@@ -36,7 +36,22 @@ public class encoder {
       debugger(LSFR2,start2);
       debugger(LSFR3,start3);
       System.out.println(" ");
+
+      System.out.println(maj(true, true, false));
       return "";
+    }
+
+    public static boolean maj(boolean x, boolean y, boolean z) {
+      int zeros = 0;
+      int ones = 0;
+      if (x) {ones++;} else {zeros++;}
+      if (y) {ones++;} else {zeros++;}
+      if (z) {ones++;} else {zeros++;}
+      return ones > zeros;
+    }
+
+    public static boolean[] clock(boolean[] LSFR1, boolean[] LSFR2, boolean[] LSFR3) {
+      return new boolean[1];
     }
 
     public static void debugger(boolean[] LSFR1, int start1) {
