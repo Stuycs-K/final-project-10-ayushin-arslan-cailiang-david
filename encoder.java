@@ -15,7 +15,7 @@ public class encoder {
       int start1 = 0;
       int start2 = 0;
       int start3 = 0;
-      for (int k = 0; k < 7; k++) {
+      for (int k = 0; k < 8; k++) {
         for (int i = 7; i >= 0; i--) {
           LSFR1[Math.floorMod(start1-1,19)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
           start1 = Math.floorMod(start1-1,19);
@@ -23,18 +23,18 @@ public class encoder {
           start2 = Math.floorMod(start2-1,22);
           LSFR3[Math.floorMod(start3-1,23)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
           start3 = Math.floorMod(start3-1,23);
-          if (k==3) {
-            debugger(LSFR1,start1);
-            debugger(LSFR2,start2);
-            debugger(LSFR3,start3);
-            System.out.println(" ");
-          }
+          // if (k==7) {
+          //   debugger(LSFR1,start1);
+          //   debugger(LSFR2,start2);
+          //   debugger(LSFR3,start3);
+          //   System.out.println(" ");
+          // }
         }
         System.out.println("");
       }
-      // debugger(LSFR1,start1);
-      // debugger(LSFR2,start2);
-      // debugger(LSFR3,start3);
+      debugger(LSFR1,start1);
+      debugger(LSFR2,start2);
+      debugger(LSFR3,start3);
       System.out.println(" ");
       return "";
     }
