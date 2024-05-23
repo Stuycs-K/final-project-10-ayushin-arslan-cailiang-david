@@ -11,11 +11,13 @@
 info
 
 
-## GROUP MEMBER 2
+## Arslan Ayushin
 
-### date x
+### 5/22/24
 
-info
+- Set up java encoder in class
+- step 2 seems to be working except for one bit
+- added first iteration of irregular clock step
 
 ### date y
 
