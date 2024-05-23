@@ -15,35 +15,50 @@ public class encoder {
       int start1 = 0;
       int start2 = 0;
       int start3 = 0;
-      for (int k = 0; k < 3; k++) {
-      for (int i = 7; i >= 0; i--) {
-        LSFR1[Math.floorMod(start1-1,19)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-        start1 = Math.floorMod(start1-1,19);
-        LSFR2[Math.floorMod(start2-1,22)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-        start2 = Math.floorMod(start2-1,22);
-        LSFR3[Math.floorMod(start3-1,23)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-        start3 = Math.floorMod(start3-1,23);
-        if (k==2) {
-        debugger(LSFR1,start1);
-        debugger(LSFR2,start2);
-        debugger(LSFR3,start3);
-        System.out.println(" ");
+      for (int k = 0; k < 7; k++) {
+        for (int i = 7; i >= 0; i--) {
+          LSFR1[Math.floorMod(start1-1,19)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+          start1 = Math.floorMod(start1-1,19);
+          LSFR2[Math.floorMod(start2-1,22)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+          start2 = Math.floorMod(start2-1,22);
+          LSFR3[Math.floorMod(start3-1,23)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+          start3 = Math.floorMod(start3-1,23);
+          if (k==3) {
+            debugger(LSFR1,start1);
+            debugger(LSFR2,start2);
+            debugger(LSFR3,start3);
+            System.out.println(" ");
+          }
+        }
+        System.out.println("");
       }
-    }
-    System.out.println("");
-    }
+      // debugger(LSFR1,start1);
+      // debugger(LSFR2,start2);
+      // debugger(LSFR3,start3);
+      System.out.println(" ");
       return "";
     }
 
     public static void debugger(boolean[] LSFR1, int start1) {
-      boolean[] output = new boolean[LSFR1.length];
+      String[] output = new String[LSFR1.length];
       int pos = 0;
       for (int i = start1; i < LSFR1.length; i++) {
-        output[pos] = LSFR1[i];
+        if (LSFR1[i]) {
+          output[pos] = "1";
+        }
+        else {
+          output[pos] = "0";
+        }
         pos++;
       }
       for (int i = 0; i < start1; i++) {
-        output[pos] = LSFR1[i];
+        if (LSFR1[i]) {
+          output[pos] = "1";
+        }
+        else {
+          output[pos] = "0";
+        }
+        pos++;
       }
       System.out.println(Arrays.toString(output));
 }
