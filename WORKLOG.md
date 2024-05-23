@@ -1,10 +1,10 @@
 # Work Log
 
-## GROUP MEMBER 1
+## David Cai Liang
 
-### date x
+### 5/22/2024
 
-info
+1) Worked on Stage 2 of the algorithm. It broke after I added 16 bits to the shift registers.
 
 ### date y
 
