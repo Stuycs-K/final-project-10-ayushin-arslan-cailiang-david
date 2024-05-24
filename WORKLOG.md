@@ -19,6 +19,6 @@ info
 - step 2 seems to be working except for one bit
 - added first iteration of irregular clock step
 
-### date y
+### 5/23/24
 
-info
+- fixed 100 clocks step + test steps 1-4
