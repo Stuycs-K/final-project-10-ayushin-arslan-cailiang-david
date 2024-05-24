@@ -16,6 +16,7 @@ public class encoder {
     int start1 = 0;
     int start2 = 0;
     int start3 = 0;
+    //Stage 2
     for (int k = 0; k < 8; k++) {
       for (int i = 7; i >= 0; i--) {
         LSFR1[Math.floorMod(start1-1,19)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
@@ -25,7 +26,7 @@ public class encoder {
         LSFR3[Math.floorMod(start3-1,23)] = ((SESSION_KEY[k] >> i & 1) != 0) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
         start3 = Math.floorMod(start3-1,23);
       }
-    }
+    //Stage 3
     for (int i = 21; i >= 0; i--) {
       LSFR1[Math.floorMod(start1-1,19)] = ((INITIALIZATION_VECTOR >> i & 1) != 0) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
       start1 = Math.floorMod(start1-1,19);
@@ -38,6 +39,7 @@ public class encoder {
     boolean clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
     boolean clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
     boolean maj_bit = maj(clock1, clock2, clock3);
+    //Stage 4
     for (int i = 0; i < 100; i++) {
       if (clock1 == maj_bit) {
         LSFR1[Math.floorMod(start1-1,19)] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
@@ -52,7 +54,7 @@ public class encoder {
         start3 = Math.floorMod(start3-1,23);
       }
     }
-
+    //Stage 5
     int[] output = new int[20];
     for (int i = 0; i < 20; i++) {
       int temp = 0;
