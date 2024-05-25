@@ -55,8 +55,8 @@ public class encoder {
       }
     }
     //Stage 5
-    int[] output = new int[20];
-    for (int i = 0; i < 20; i++) {
+    int[] output = new int[Message.Length()];
+    for (int i = 0; i < Message.Length(); i++) {
       int temp = 0;
       for (int j = 0; j < 8; j++) {
         if (LSFR1[start1] ^ LSFR2[start2] ^ LSFR3[start3]) {
