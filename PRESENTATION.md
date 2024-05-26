@@ -161,4 +161,4 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Diagram")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/The-A5-1-stream-cipher-algorithm.png "Diagram of A5/1")
