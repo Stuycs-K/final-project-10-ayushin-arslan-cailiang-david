@@ -30,13 +30,15 @@ https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= Wikipe
 
 https://en.wikipedia.org/wiki/DVB-T <= Wikipedia DVB-T
 
+https://en.wikipedia.org/wiki/GSM_frequency_bands <= Wikipedia GSM Frequency Bands
+
 # History of GSM
 
 GSM stands for Global System for Mobile Communications. It is a standard for digital cellular communications.
-It is created by a standards organization by the same name, in 1991. The organization itself was founded in 1982.
-GSM was built upon earlier standards like American Mobile Phone System (AMPS) and Nordic Mobile Telephone (NMT) 450.
-But these earlier standards were built on analog systems rather than digital systems, making them significantly more
-costly to operate compared to GSM and other more modern communications standards.
+It was first implemented by European Telecommunications Standards Institute, in 1991. The trademark is currently held by Global System
+for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)
+and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than digital systems,
+making them significantly more costly to operate compared to GSM and other more modern communications standards.
 
 An important part of GSM is narrowband time division multiple accession (TDMA), which allows multiple people to use the
 same band of radio frequencies simultaneous, by switching between connections rapidly. This is allowed for by using digital
@@ -44,7 +46,9 @@ techniques rather than analog techniques.
 
 In addition, GSM was fully duplex meaning uplink and downlink frequencies were different allowing you to simultaneously receive
 and transmit, which allows a lot more data to be sent. This need for additional frequencies was compensated for by the use of TDMA,
-which makes each channel much more data dense.
+which makes each channel much more data dense. This allowed for higher speed non-voice cellular data.
+
+GSM was also one of the first protocols to encrypt its communications streams. 
 
 Improvement on GSM:
 
@@ -104,9 +108,10 @@ The COMP128 algorithm's main problem is the small output and weak diffusion.
 
 Note: 5G uses more complex methods to maintain confidentiality.
 
-GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit country code, a three digit service provider code, and a nine digit subscriber code. This is different from a
+GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
 International Mobile Equipment Identity (IMEI) number which identifies a phone or a Integrated Circuit Card Identifier (ICCID) number
  which identifies a SIM card. A Mobile Station International Subscriber Directory (MSSIDN) number is simply your whole phone number.
+ IMEI is generated using a Type Allocation Code (TAC) which is managed by GMS association.
 
 Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI) is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related information like challenge codes. It also has to be sent when a device is first connect to a
 network and needs to receive up to date security information from the nearest cell tower.
@@ -127,5 +132,11 @@ The units that are capable of doing this are exclusively active units, which act
 DVB-T is a satellite communications protocol meant for TV. The receivers for this standard is extremely common and many of them are able
 to operate on frequencies not used by satellite TV. Many of them also tend to be software-defined meaning they don't decode in hardware
 but rather than software, allowing them to work with many communications protocols such as GSM. These devices allow for the assembly of
-a purely passive IMSI-catcher for less than $50. This technology and many other supporting technologies such as those of Graphic Cards
-have drastically weakened algorithms and protocols associated with GSM.
+a purely passive IMSI-catcher for less than $50.
+
+# Additional Technical Specifications of GSM
+
+The two GSM radio channels commonly used in the US:
+GSM Band    Uplink (MHz)       Downlink (MHz)
+GSM-850     824.2 – 848.8      869.2 – 893.8
+PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
