@@ -8,3 +8,5 @@ Encryption and Decryption of the Files using the A5/1 algorithm
 1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE CIPHERTEXT_FILE
 
 2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE CLEARTEXT_FILE
+
+3) Read PRESENTATION.md for History on GSM and A5/1

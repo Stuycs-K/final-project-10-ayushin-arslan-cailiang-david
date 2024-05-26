@@ -32,6 +32,8 @@ https://en.wikipedia.org/wiki/DVB-T <= Wikipedia DVB-T
 
 https://en.wikipedia.org/wiki/GSM_frequency_bands <= Wikipedia GSM Frequency Bands
 
+https://en.wikipedia.org/wiki/SIM_card <= Wikipedia SIM cards
+
 # History of GSM
 
 GSM stands for Global System for Mobile Communications. It is a standard for digital cellular communications.
@@ -48,7 +50,7 @@ In addition, GSM was fully duplex meaning uplink and downlink frequencies were d
 and transmit, which allows a lot more data to be sent. This need for additional frequencies was compensated for by the use of TDMA,
 which makes each channel much more data dense. This allowed for higher speed non-voice cellular data.
 
-GSM was also one of the first protocols to encrypt its communications streams. 
+GSM was also one of the first protocols to encrypt its communications streams.
 
 Improvement on GSM:
 
@@ -111,10 +113,26 @@ Note: 5G uses more complex methods to maintain confidentiality.
 GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
 International Mobile Equipment Identity (IMEI) number which identifies a phone or a Integrated Circuit Card Identifier (ICCID) number
  which identifies a SIM card. A Mobile Station International Subscriber Directory (MSSIDN) number is simply your whole phone number.
- IMEI is generated using a Type Allocation Code (TAC) which is managed by GMS association.
+ IMEI is generated using a Type Allocation Code (TAC), which is managed by the GMS Association.
 
 Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI) is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related information like challenge codes. It also has to be sent when a device is first connect to a
 network and needs to receive up to date security information from the nearest cell tower.
+
+# SIM Cards
+
+A Subscriber Identity Module (SIM) contains the following:
+
+1) security authentication and cipher information. (eg: 128-bit authentication key)
+
+2) temporary information regarding the local network (eg: challenge codes and local area identity)
+
+3) IMSI (identities the subscriber)
+
+4) ICCID (identifies the SIM card)
+
+5) PIN (used to unlock access to the SIM card to allow non-emergency calls and data to go through)
+
+A SIM card often also contains additional user authentication information and a contact list.
 
 # IMSI-Catcher
 
@@ -140,3 +158,5 @@ The two GSM radio channels commonly used in the US:
 GSM Band    Uplink (MHz)       Downlink (MHz)
 GSM-850     824.2 – 848.8      869.2 – 893.8
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
+
+# How A5/1 functions
