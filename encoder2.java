@@ -16,26 +16,28 @@ public class encoder2{
 
   public static void encoder(String KEY, String INITIALIZATION_VECTOR, String inputText, String OutputFile) {
     int[] SESSION_KEY = generateSessionKey(KEY);
-    //hexdump(SESSION_KEY);
+    hexdump(SESSION_KEY);
     int[] LSFR1 = new int[19];
     int[] LSFR2 = new int[22];
     int[] LSFR3 = new int[23];
     int start1 = 0;
     int start2 = 0;
     int start3 = 0;
-    for (int k = 0; k < 8; k++) {
-      for (int i = 7; i >= 0; i--) {
+    for (int k = 0; k < 3; k++) {
+      for (int i = 0; i < 8; i++) {
+        System.out.println("key: "+(SESSION_KEY[k] >> i & 1));
         LSFR1[Math.floorMod(start1-1,19)] = (SESSION_KEY[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
         start1 = Math.floorMod(start1-1,19);
         LSFR2[Math.floorMod(start2-1,22)] = (SESSION_KEY[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
         start2 = Math.floorMod(start2-1,22);
         LSFR3[Math.floorMod(start3-1,23)] = (SESSION_KEY[k] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
         start3 = Math.floorMod(start3-1,23);
+        System.out.println("");
+        debugger(LSFR1,start1);
+        debugger(LSFR2,start2);
+        debugger(LSFR3,start3);
       }
     }
-    System.out.println(Arrays.toString(LSFR1));
-    System.out.println(Arrays.toString(LSFR2));
-    System.out.println(Arrays.toString(LSFR3));
     ////
     int[] output = new int[12];
     for (int i = 0; i < 12; i++) {
@@ -93,6 +95,17 @@ public class encoder2{
       output[i] = Integer.toHexString(input[i]);
     }
     System.out.println(Arrays.toString(output));
+  }
+
+  public static void debugger(int[] input, int start1) {
+    int output = 0;
+    for (int i = start1; i >= 0; i--) {
+      output = output << 1 | input[i];
+    }
+    for (int i = 0; i < start1; i--) {
+      output = output << 1 | input[i];
+    }
+    System.out.println(output);
   }
 
 
