@@ -160,3 +160,5 @@ GSM-850     824.2 – 848.8      869.2 – 893.8
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
 
 # How A5/1 functions
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Diagram")
