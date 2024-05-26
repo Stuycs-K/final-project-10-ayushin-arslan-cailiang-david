@@ -155,10 +155,26 @@ a purely passive IMSI-catcher for less than $50.
 # Additional Technical Specifications of GSM
 
 The two GSM radio channels commonly used in the US:
+
 GSM Band    Uplink (MHz)       Downlink (MHz)
+
 GSM-850     824.2 – 848.8      869.2 – 893.8
+
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
 
 # How A5/1 functions
 
 ![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/The-A5-1-stream-cipher-algorithm.png "Diagram of A5/1")
+
+1) We xor the first bit of the key with the values in all the blue positions in register 1.
+2) We shift all the values in register 1 over by 1 so that there is an empty spot at the beginning of the register. We discard the last
+item.
+3) We insert our xored value at the beginning of register 1.
+4) We repeat for register 2 and 3.
+5) We then load next 63 bits of the key in the same manner as we did for the first bit.
+6) We then load the 22-bit initialization vector by the same method.
+7) We find the majority bit in the orange major positions of all 3 registers. 1 is the majority if it is present in the major position
+of two or more registers.
+8) Registers with the majority bit have all their blue bits xored together, are shifted by one, and have the new xored value placed at
+ the beginning. Basically the same thing as Step 1-3, except we don't xor a key bit and it doesn't necessarily happen to all registers.
+9) Repeat step 8, 99 more times.
