@@ -6,9 +6,9 @@
 
 1) Worked on Stage 2 of the algorithm. It broke after I added 16 bits to the shift registers.
 
-### date y
+### 5/24/2024
 
-info
+2) Can't get Stage 2 to agree with better implementation of A5/!
 
 
 ## GROUP MEMBER 2
