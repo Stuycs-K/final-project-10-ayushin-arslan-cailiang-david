@@ -8,7 +8,7 @@
 
 ### 5/24/2024
 
-2) Can't get Stage 2 to agree with better implementation of A5/!
+2) Can't get Stage 2 to agree with better implementation of A5/1
 
 
 ## GROUP MEMBER 2
