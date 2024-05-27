@@ -12,7 +12,7 @@ KEY_STRING and INITIALIZATION_VECTOR are both in Hexadecimal.
 
 KEY_STRING is required to be 16 characters long.
 
-INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits. The largest 2 bits are discarded automatically.
+INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits. The 2 smallest bits are discarded automatically.
 
 1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE CIPHERTEXT_FILE
 
