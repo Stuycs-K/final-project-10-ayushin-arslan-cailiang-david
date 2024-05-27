@@ -170,11 +170,16 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 2) We shift all the values in register 1 over by 1 so that there is an empty spot at the beginning of the register. We discard the last
 item.
 3) We insert our xored value at the beginning of register 1.
-4) We repeat for register 2 and 3.
-5) We then load next 63 bits of the key in the same manner as we did for the first bit.
+4) We repeat the same process for register 2 and 3.
+5) We then load the next 63 bits of the key in the same manner as we did for the first bit.
 6) We then load the 22-bit initialization vector by the same method.
-7) We find the majority bit in the orange major positions of all 3 registers. 1 is the majority if it is present in the major position
+7) We find the majority bit in the orange majority positions of all 3 registers. 1 is the majority if it is present in the major position
 of two or more registers.
-8) Registers with the majority bit have all their blue bits xored together, are shifted by one, and have the new xored value placed at
- the beginning. Basically the same thing as Step 1-3, except we don't xor a key bit and it doesn't necessarily happen to all registers.
+8) Registers with the majority bit in the majority position have all their blue bits xored together, are shifted by one, and then have the new xored value placed at
+ the beginning. Basically the same thing as Step 1-3, except we don't xor a key bit and we only process some of the registers.
 9) Repeat step 8, 99 more times.
+10) Save and xor the last bit of all the registers. Perform Step 8 again.
+11) Repeat Step 10, another 113 times so you get a 114 bit keyStream.
+12) Xor this 114 bit keyStream with the first 114 bits of your plaintext.
+13) Add 1 to your 22-bit initialization vector.
+14) Repeat Step 1-13 until your entire plaintext is encrypted.
