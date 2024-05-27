@@ -7,6 +7,10 @@ public class encoder2{
     //int[] INITIALIZATION_VECTOR = generateHex("000133",3);
     // int[] Stream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
     // System.out.println(Arrays.toString(Stream));
+    if (args.length != 3 || args[0].length() != 16 || args[1].length() != 6) {
+      System.out.println("input error - read README.md")
+      System.exit(0);
+    }
     int[] SESSION_KEY = generateHex(args[0],8);
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
     try {
