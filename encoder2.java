@@ -4,15 +4,16 @@ public class encoder2{
   public static void main(String[] args) {
     // int[] SESSION_KEY = generateHex("4E2F4D7C1EB88B3A",8);
     //int[] SESSION_KEY = generateHex("1223456789ABCDEF",8);
-    //int[] INITIALIZATION_VECTOR = generateHex("000133",3);
+    //int[] INITIALIZATION_VECTOR = generateHex("133000",3);
     // int[] Stream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
     // System.out.println(Arrays.toString(Stream));
     if (args.length != 3 || args[0].length() != 16 || args[1].length() != 6) {
-      System.out.println("input error - read README.md")
+      System.out.println("input error - read README.md");
       System.exit(0);
     }
     int[] SESSION_KEY = generateHex(args[0],8);
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
+    Random random = new Random((long) (INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]));
     try {
       ArrayList<Integer> plainText = new ArrayList<Integer> ();
       //File plain = new File("The-A5-1-stream-cipher-algorithm.png");
@@ -44,7 +45,10 @@ public class encoder2{
       int[] keyStream = new int[plainText.size()*8];
       for (int i = 0; i < keyStream.length+114; i+=114) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
-        INITIALIZATION_VECTOR[2]++;
+        int rand = random.nextInt(8388608);
+        INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
+        INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
+        INITIALIZATION_VECTOR[0] = rand | 0xFF;
         for (int k = 0; k < 114; k++) {
           if (i+k < keyStream.length) {
           keyStream[i+k] = temp2[k];
