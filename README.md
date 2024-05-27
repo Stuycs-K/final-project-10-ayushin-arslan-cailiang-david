@@ -5,6 +5,15 @@ Arslan Ayushin and David Cai Liang
 ## Overview
 Encryption and Decryption of the Files using the A5/1 algorithm
 ## Instructions
+
+Notes:
+
+KEY_STRING and INITIALIZATION_VECTOR are both in Hexadecimal.
+
+KEY_STRING is required to be 16 characters long.
+
+INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits.
+
 1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE CIPHERTEXT_FILE
 
 2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE CLEARTEXT_FILE

@@ -2,8 +2,8 @@ import java.util.*;
 import java.io.*;
 public class encoder {
   public static void main(String args[]) {
-    //int[] SESSION_KEY = {0b01001110,0b00101111,0b01001101,0b01111100,0b00011110,0b10111000,0b10001011,0b00111010};
-    int[] SESSION_KEY = {0x12,0x23,0x45,0x67,0x89,0xab,0xcd,0xef};
+    int[] SESSION_KEY = {0b01001110,0b00101111,0b01001101,0b01111100,0b00011110,0b10111000,0b10001011,0b00111010};
+    //int[] SESSION_KEY = {0x12,0x23,0x45,0x67,0x89,0xab,0xcd,0xef};
     long INITIALIZATION_VECTOR = 134;
     String Message = "Happy bunnies will live forever.";
     encode(SESSION_KEY,INITIALIZATION_VECTOR,Message);
