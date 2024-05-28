@@ -3,8 +3,8 @@ import java.util.*;
 public class encoder2{
   public static void main(String[] args) {
     // int[] SESSION_KEY = generateHex("4E2F4D7C1EB88B3A",8);
-    //int[] SESSION_KEY = generateHex("1223456789ABCDEF",8);
-    //int[] INITIALIZATION_VECTOR = generateHex("133000",3);
+    // int[] SESSION_KEY = generateHex("1223456789ABCDEF",8);
+    // int[] INITIALIZATION_VECTOR = generateHex("000133",3);
     // int[] Stream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
     // System.out.println(Arrays.toString(Stream));
     if (args.length != 3) {
@@ -30,9 +30,9 @@ public class encoder2{
       System.out.println("Initialization vector is a hex value.");
       System.exit(0);
     }
-    if (args[1].charAt(5) != 48 && args[1].charAt(5) != 52 && args[1].charAt(5) != 56 && args[1].charAt(5) != 67 && args[1].charAt(5) != 99) {
-      System.out.println("Invalid final character for initialization vector.");
-      System.out.println("Must end in: 0,4,8,c,C");
+    if (args[1].charAt(0) != 48 && args[1].charAt(0) != 52 && args[1].charAt(0) != 56 && args[1].charAt(0) != 67 && args[1].charAt(0) != 99) {
+      System.out.println("Invalid initial character for initialization vector.");
+      System.out.println("Must start with: 0,4,8,c,C");
       System.exit(0);
     }
     int[] SESSION_KEY = generateHex(args[0],8);
@@ -69,10 +69,11 @@ public class encoder2{
       int[] keyStream = new int[plainText.size()*8];
       for (int i = 0; i < keyStream.length+228; i+=228) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
-        int rand = random.nextInt(8388608);
+        hexify(temp2);
+        int rand = random.nextInt(INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]);
         INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
         INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
-        INITIALIZATION_VECTOR[0] = rand | 0xFF;
+        INITIALIZATION_VECTOR[2] = rand | 0xFF;
         for (int k = 0; k < 228; k++) {
           if (i+k < keyStream.length) {
           keyStream[i+k] = temp2[k];
@@ -107,7 +108,7 @@ public class encoder2{
     int start2 = 0;
     int start3 = 0;
     for (int k = 0; k < 8; k++) {
-      for (int i = 7; i >= 0; i--) {
+      for (int i = 0; i < 8; i++) {
         LSFR1[(start1+18)%19] = (SESSION_KEY[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
         start1 = (start1+18)%19;
         LSFR2[(start2+21)%22] = (SESSION_KEY[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
@@ -126,48 +127,48 @@ public class encoder2{
     // System.out.println("");
     ////
     ////
-    for (int k = 0; k < 2; k++) {
-      for (int i = 7; i >= 0; i--) {
-        LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-        start1 = (start1+18)%19;
-        LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-        start2 = (start2+21)%22;
-        LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-        start3 = (start3+22)%23;
-      }
-    }
-    for (int i = 5; i >= 0; i--) {
-      LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[2] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-      start1 = Math.floorMod(start1-1,19);
-      LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[2] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-      start2 = Math.floorMod(start2-1,22);
-      LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[2] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-      start3 = Math.floorMod(start3-1,23);
-    }
+    // for (int i = 2; i < 8; i++) {
+    //   LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+    //   start1 = Math.floorMod(start1-1,19);
+    //   LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+    //   start2 = Math.floorMod(start2-1,22);
+    //   LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+    //   start3 = Math.floorMod(start3-1,23);
+    // }
+    // for (int k = 1; k < 3; k++) {
+    //   for (int i = 0; i < 8; i++) {
+    //     LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+    //     start1 = (start1+18)%19;
+    //     LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+    //     start2 = (start2+21)%22;
+    //     LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+    //     start3 = (start3+22)%23;
+    //   }
+    // }
     // debugger(LSFR1,start1);
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
     // System.out.println("");
     ////
     ////
-    for (int i = 0; i < 100; i++) {
-      int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
-      int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
-      int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
-      int maj_bit = (clock1+clock2+clock3)/2;
-      if (clock1 == maj_bit) {
-        LSFR1[(start1+18)%19] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-        start1 = (start1+18)%19;
-      }
-      if (clock2 == maj_bit) {
-        LSFR2[(start2+21)%22] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-        start2 = (start2+21)%22;
-      }
-      if (clock3 == maj_bit) {
-        LSFR3[(start3+22)%23] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-        start3 = (start3+22)%23;
-      }
-    }
+    // for (int i = 0; i < 100; i++) {
+    //   int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
+    //   int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
+    //   int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
+    //   int maj_bit = (clock1+clock2+clock3)/2;
+    //   if (clock1 == maj_bit) {
+    //     LSFR1[(start1+18)%19] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+    //     start1 = (start1+18)%19;
+    //   }
+    //   if (clock2 == maj_bit) {
+    //     LSFR2[(start2+21)%22] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+    //     start2 = (start2+21)%22;
+    //   }
+    //   if (clock3 == maj_bit) {
+    //     LSFR3[(start3+22)%23] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+    //     start3 = (start3+22)%23;
+    //   }
+    // }
     // debugger(LSFR1,start1);
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
@@ -234,6 +235,14 @@ public class encoder2{
       pos++;
     }
     System.out.println(Arrays.toString(output));
+  }
+
+  public static void hexify(int[] data) {
+    int output = 0;
+    for (int i = 0; i < 114; i++) {
+      output = output << 1 | data[i];
+    }
+    System.out.println(Integer.toHexString(output));
   }
 
 

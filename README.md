@@ -14,13 +14,13 @@ KEY_STRING is required to be 16 characters long.
 
 INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits.
 
-INITIALIZATION_VECTOR must end in: 0,4,8,c,C
+INITIALIZATION_VECTOR must start in: 0,4,8,c,C
 
-The 2 smallest bits are discarded automatically.
+The 2 largest bits are discarded automatically.
 
 1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE ==> returns a file known as output.dat
 
-Sample: make encode2 ARGS="1223456789ABCDEF 133000 input.dat"
+Sample: make encode2 ARGS="1223456789ABCDEF 000133 input.dat"
 
 2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE ==> returns a file known as output.dat
 
