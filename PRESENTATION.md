@@ -128,15 +128,15 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 General Goals of A5/1
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image0.png "General Goals of A5/1")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image0.png "General Goals of A5/1")
 Registers Before A5/1
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image1.png "Registers Before A5/1")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image1.png "Registers Before A5/1")
 Information
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image2.png "Information")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image2.png "Information")
 Clock Once
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image3.png "Clock Once")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image3.png "Clock Once")
 Key Insert to Registers
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image4.png "Key Insert to Registers")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image4.png "Key Insert to Registers")
 
 1) We xor the first bit of the key with the tapping bits for all the registers.
 
@@ -151,18 +151,18 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 3) We repeat this process for the entire 64-bit key.
 
 Vector Insert to Registers
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image5.png "Vector Insert to Registers")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image5.png "Vector Insert to Registers")
 
 4) We repeat the process for the key on the initialization vector.
 
 Outcome after Key & Vector Insert
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image8.png "Outcome after Key & Vector Insert")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image8.png "Outcome after Key & Vector Insert")
 Irregularly Clock V1
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image6.png "Irregularly Clock V1")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image6.png "Irregularly Clock V1")
 Irregularly Clock V2
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image7.png "Irregularly Clock V2")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image7.png "Irregularly Clock V2")
 Clocking Rules
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image9.png "Clocking Rules")
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image9.png "Clocking Rules")
 
 5) We find the majority bit in the clock bit index of all 3 registers. 1 is the majority if it is present in the clock bit index
 of two or more registers.
