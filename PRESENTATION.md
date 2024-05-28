@@ -128,26 +128,21 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 
-<summary>Goals of A5/1</summary>
+Goals of A5/1
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image0.png" alt="General Goals of A5/1" width="250">
 
-<summary>Registers Before A5/1</summary>
+Registers Before A5/1
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image1.png" alt="Registers Before A5/1" width="250">
 
-<details>
-<summary>General Information about Registers</summary>
+General Information about Registers
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image2.png" alt="General Information about Registers" width="250">
-</details>
 
-<details>
-<summary>Clock Once</summary>
+Clock Once
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image3.png" alt="Clock Once" width="250">
-</details>
 
-<details>
-<summary>Insert Key Into Registers</summary>
+
+Insert Key Into Registers
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image4.png" alt="Insert Key Into Registers" width="250">
-</details>
 
 1) We xor the first bit of the key with the tapping bits for all the registers.
 
