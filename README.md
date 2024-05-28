@@ -14,12 +14,12 @@ KEY_STRING is required to be 16 characters long.
 
 INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits.
 
-The 2 smallest bits are discarded automatically.
-
 INITIALIZATION_VECTOR must end in: 0,4,8,c,C
 
-1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE CIPHERTEXT_FILE
+The 2 smallest bits are discarded automatically.
 
-2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE CLEARTEXT_FILE
+1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE ==> returns a file known as output.dat
+
+2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE ==> returns a file known as output.dat
 
 3) Read PRESENTATION.md for History on GSM and A5/1

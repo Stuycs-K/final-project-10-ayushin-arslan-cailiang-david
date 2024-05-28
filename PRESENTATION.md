@@ -1,39 +1,3 @@
-## THIS DOCUMENT IS REQUIRED
-
-http://koclab.cs.ucsb.edu/teaching/cren/project/2017/jensen+andersen.pdf <= Documentation On A5/1
-
-https://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001487/M017205/ET/147022641604ET.pdf <= GSM Security Documentation
-
-https://www.uky.edu/~jclark/mas355/GSM.PDF <= General Information On GSM
-
-https://en.wikipedia.org/wiki/A5/1 <= Wikipedia A5/1
-
-https://en.wikipedia.org/wiki/A5/2 <= Wikipedia A5/2
-
-https://en.wikipedia.org/wiki/KASUMI <= Wikipedia A5/3
-
-https://en.wikipedia.org/wiki/GSM <= Wikipedia GSM
-
-https://en.wikipedia.org/wiki/Enhanced_Data_rates_for_GSM_Evolution <= Wikipedia EDGE
-
-https://en.wikipedia.org/wiki/3G <= Wikipedia 3G
-
-https://link.springer.com/chapter/10.1007/978-3-540-45146-4_35 <= A5/2 Force Vulnerability
-
-https://en.wikipedia.org/wiki/Digital_AMPS <= Digital AMPS (Competing Standard with GSM)
-
-https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
-
-https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
-
-https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= Wikipedia IMSI
-
-https://en.wikipedia.org/wiki/DVB-T <= Wikipedia DVB-T
-
-https://en.wikipedia.org/wiki/GSM_frequency_bands <= Wikipedia GSM Frequency Bands
-
-https://en.wikipedia.org/wiki/SIM_card <= Wikipedia SIM cards
-
 # History of GSM
 
 GSM stands for Global System for Mobile Communications. It is a standard for digital cellular communications.
@@ -183,3 +147,39 @@ of two or more registers.
 12) Xor this 114 bit keyStream with the first 114 bits of your plaintext.
 13) Add 1 to your 22-bit initialization vector.
 14) Repeat Step 1-13 until your entire plaintext is encrypted.
+
+# Resources
+
+http://koclab.cs.ucsb.edu/teaching/cren/project/2017/jensen+andersen.pdf <= Documentation On A5/1
+
+https://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001487/M017205/ET/147022641604ET.pdf <= GSM Security Documentation
+
+https://www.uky.edu/~jclark/mas355/GSM.PDF <= General Information On GSM
+
+https://en.wikipedia.org/wiki/A5/1 <= Wikipedia A5/1
+
+https://en.wikipedia.org/wiki/A5/2 <= Wikipedia A5/2
+
+https://en.wikipedia.org/wiki/KASUMI <= Wikipedia A5/3
+
+https://en.wikipedia.org/wiki/GSM <= Wikipedia GSM
+
+https://en.wikipedia.org/wiki/Enhanced_Data_rates_for_GSM_Evolution <= Wikipedia EDGE
+
+https://en.wikipedia.org/wiki/3G <= Wikipedia 3G
+
+https://link.springer.com/chapter/10.1007/978-3-540-45146-4_35 <= A5/2 Force Vulnerability
+
+https://en.wikipedia.org/wiki/Digital_AMPS <= Digital AMPS (Competing Standard with GSM)
+
+https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
+
+https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
+
+https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= Wikipedia IMSI
+
+https://en.wikipedia.org/wiki/DVB-T <= Wikipedia DVB-T
+
+https://en.wikipedia.org/wiki/GSM_frequency_bands <= Wikipedia GSM Frequency Bands
+
+https://en.wikipedia.org/wiki/SIM_card <= Wikipedia SIM cards
