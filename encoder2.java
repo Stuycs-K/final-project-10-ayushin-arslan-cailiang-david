@@ -7,8 +7,32 @@ public class encoder2{
     //int[] INITIALIZATION_VECTOR = generateHex("133000",3);
     // int[] Stream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
     // System.out.println(Arrays.toString(Stream));
-    if (args.length != 3 || args[0].length() != 16 || args[1].length() != 6) {
-      System.out.println("input error - read README.md");
+    if (args.length != 3) {
+      System.out.println("Enter 3 items.");
+      System.out.println("KEY INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE");
+      System.exit(0);
+    }
+    if (args[0].length() != 16) {
+      System.out.println("Wrong sized key entered.");
+      System.out.println("Keys are 16 character long hex strings.");
+      System.exit(0);
+    }
+    if (!args[0].matches("[0-9a-fA-F]{16}")) {
+      System.out.println("Key is a hex value.");
+      System.exit(0);
+    }
+    if (args[1].length() != 6) {
+      System.out.println("Wrong sized initialization vector entered.");
+      System.out.println("Keys are 6 character long hex strings.");
+      System.exit(0);
+    }
+    if (!args[1].matches("[0-9a-fA-F]{6}")) {
+      System.out.println("Initialization vector is a hex value.");
+      System.exit(0);
+    }
+    if (args[1].charAt(5) != 48 && args[1].charAt(5) != 52 && args[1].charAt(5) != 56 && args[1].charAt(5) != 67 && args[1].charAt(5) != 99) {
+      System.out.println("Invalid final character for initialization vector.");
+      System.out.println("Must end in: 0,4,8,c,C");
       System.exit(0);
     }
     int[] SESSION_KEY = generateHex(args[0],8);
