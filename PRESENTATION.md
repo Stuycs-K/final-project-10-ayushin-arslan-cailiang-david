@@ -128,15 +128,11 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 
-<details>
 <summary>Goals of A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image0.png" alt="General Goals of A5/1" width="250">
-</details>
 
-<details>
 <summary>Registers Before A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image1.png" alt="Registers Before A5/1" width="250">
-</details>
 
 <details>
 <summary>General Information about Registers</summary>
