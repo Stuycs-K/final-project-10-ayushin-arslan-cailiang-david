@@ -20,6 +20,8 @@ The 2 smallest bits are discarded automatically.
 
 1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE ==> returns a file known as output.dat
 
+Sample: make encode "1223456789ABCDEF 133000 input.dat output.dat"
+
 2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE ==> returns a file known as output.dat
 
 3) Read PRESENTATION.md for History on GSM and A5/1
