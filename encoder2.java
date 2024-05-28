@@ -34,7 +34,7 @@ public class encoder2{
       System.out.println("Invalid final character for initialization vector.");
       System.out.println("Must end in: 0,4,8,c,C");
       System.exit(0);
-    } 
+    }
     int[] SESSION_KEY = generateHex(args[0],8);
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
     Random random = new Random((long) (INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]));
@@ -67,13 +67,13 @@ public class encoder2{
         }
       }
       int[] keyStream = new int[plainText.size()*8];
-      for (int i = 0; i < keyStream.length+114; i+=114) {
+      for (int i = 0; i < keyStream.length+228; i+=228) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
         int rand = random.nextInt(8388608);
         INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
         INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
         INITIALIZATION_VECTOR[0] = rand | 0xFF;
-        for (int k = 0; k < 114; k++) {
+        for (int k = 0; k < 228; k++) {
           if (i+k < keyStream.length) {
           keyStream[i+k] = temp2[k];
         }
@@ -174,8 +174,8 @@ public class encoder2{
     // System.out.println("");
     ////
     ////
-    int[] output = new int[114];
-    for (int i = 0; i < 114; i++) {
+    int[] output = new int[228];
+    for (int i = 0; i < 228; i++) {
       int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
       int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
       int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];

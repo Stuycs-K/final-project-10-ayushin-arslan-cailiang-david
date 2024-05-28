@@ -127,26 +127,59 @@ GSM-850     824.2 – 848.8      869.2 – 893.8
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
 
 # How A5/1 functions
+General Goals of A5/1
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image0.png "General Goals of A5/1")
+Registers Before A5/1
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image1.png "Registers Before A5/1")
+Information
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image2.png "Information")
+Clock Once
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image3.png "Clock Once")
+Key Insert to Registers
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image4.png "Key Insert to Registers")
 
-![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/The-A5-1-stream-cipher-algorithm.png "Diagram of A5/1")
+1) We xor the first bit of the key with the tapping bits for all the registers.
 
-1) We xor the first bit of the key with the values in all the blue positions in register 1.
-2) We shift all the values in register 1 over by 1 so that there is an empty spot at the beginning of the register. We discard the last
-item.
-3) We insert our xored value at the beginning of register 1.
-4) We repeat the same process for register 2 and 3.
-5) We then load the next 63 bits of the key in the same manner as we did for the first bit.
-6) We then load the 22-bit initialization vector by the same method.
-7) We find the majority bit in the orange majority positions of all 3 registers. 1 is the majority if it is present in the major position
+For LFSR1, we xor the first bit of the key with bits from index 13, 16, 17, and 18.
+
+For LFSR2, we xor the first bit of the key with bits from index 20 and 21.
+
+For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 22.
+
+2) We shift all the registers up by one and insert the new xored bit at index 0.
+
+3) We repeat this process for the entire 64-bit key.
+
+Vector Insert to Registers
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image5.png "Vector Insert to Registers")
+
+4) We repeat the process for the key on the initialization vector.
+
+Outcome after Key & Vector Insert
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image8.png "Outcome after Key & Vector Insert")
+Irregularly Clock V1
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image6.png "Irregularly Clock V1")
+Irregularly Clock V2
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image7.png "Irregularly Clock V2")
+Clocking Rules
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image9.png "Clocking Rules")
+
+5) We find the majority bit in the clock bit index of all 3 registers. 1 is the majority if it is present in the clock bit index
 of two or more registers.
-8) Registers with the majority bit in the majority position have all their blue bits xored together, are shifted by one, and then have the new xored value placed at
- the beginning. Basically the same thing as Step 1-3, except we don't xor a key bit and we only process some of the registers.
-9) Repeat step 8, 99 more times.
-10) Save and xor the last bit of all the registers. Perform Step 8 again.
-11) Repeat Step 10, another 113 times so you get a 114 bit keyStream.
-12) Xor this 114 bit keyStream with the first 114 bits of your plaintext.
-13) Add 1 to your 22-bit initialization vector.
-14) Repeat Step 1-13 until your entire plaintext is encrypted.
+6) Registers with the majority bit in the clock bit index have all their tapping bits xored together, are then shifted by one, and then have the new xored value placed at index 0. The same process as Step 1-3.
+7) We repeat this process 99 more times to mix the registers.
+
+Generate 114 bit RAND
+![alt text](https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/image10.png "Generate 114 bit RAND")
+
+8) Save and xor the last bit of all the registers. Perform Steps 7-9 again.
+9) Repeat Step 10, another 227 times so you get a 228 bit keyStream.
+10) Xor this 228 bit keyStream with the first 228 bits of your plaintext.
+
+11) Add 1 to your 22-bit initialization vector.
+12) Repeat Step 1-11 until your entire plaintext is encrypted.
+
+
 
 # Resources
 
