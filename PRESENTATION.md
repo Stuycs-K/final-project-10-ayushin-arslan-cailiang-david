@@ -128,20 +128,20 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 
-Goals of A5/1
+<summary>Goals of A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image0.png" alt="General Goals of A5/1" width="250">
 
-Registers Before A5/1
+<summary>Registers Before A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image1.png" alt="Registers Before A5/1" width="250">
 
-General Information about Registers
+
+<summary>General Information about Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image2.png" alt="General Information about Registers" width="250">
 
-Clock Once
+<summary>Clock Once</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image3.png" alt="Clock Once" width="250">
 
-
-Insert Key Into Registers
+<summary>Insert Key Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image4.png" alt="Insert Key Into Registers" width="250">
 
 1) We xor the first bit of the key with the tapping bits for all the registers.
@@ -156,42 +156,30 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 
 3) We repeat this process for the entire 64-bit key.
 
-<details>
 <summary>Insert Vector Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image5.png" alt="Insert Vector Into Registers" width="250">
-</details>
 
 4) We repeat the process for the key on the initialization vector.
 
-<details>
 <summary>Outcome after Key & Vector Insertion</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image8.png" alt="Outcome after Key & Vector Insertion" width="250">
-</details>
 
-<details>
 <summary>Irregularly Clock V1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image6.png" alt="Irregularly Clock V1" width="250">
-</details>
 
-<details>
 <summary>Irregularly Clock V2</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image7.png" alt="Irregularly Clock V2" width="250">
-</details>
 
-<details>
 <summary>Clocking Rules</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image9.png" alt="Clocking Rules" width="250">
-</details>
 
 5) We find the majority bit in the clock bit index of all 3 registers. 1 is the majority if it is present in the clock bit index
 of two or more registers.
 6) Registers with the majority bit in the clock bit index have all their tapping bits xored together, are then shifted by one, and then have the new xored value placed at index 0. The same process as Step 1-3.
 7) We repeat this process 99 more times to mix the registers.
 
-<details>
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/Image10.png" alt="Generate 114 bit RAND" width="250">
-</details>
 
 8) Save and xor the last bit of all the registers. Perform Steps 7-9 again.
 9) Repeat Step 10, another 227 times so you get a 228 bit keyStream.
@@ -199,8 +187,6 @@ of two or more registers.
 
 11) Add 1 to your 22-bit initialization vector.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
-
-
 
 # Resources
 
