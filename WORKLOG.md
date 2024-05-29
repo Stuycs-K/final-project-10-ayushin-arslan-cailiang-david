@@ -22,3 +22,14 @@ info
 ### 5/23/24
 
 - fixed 100 clocks step + test steps 1-4
+
+### 5/24/24
+
+- fixed step 5 key stream outputs the last bit of register
+
+### 5/28/24
+
+- downloaded an online C encoder to compare results
+- tested both of our versions and the c version with same key and vector
+- reversed the bytes of key because our versions was reading each byte starting from least significant bit, now first step matches
+
