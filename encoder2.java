@@ -254,6 +254,7 @@ public class encoder2{
      output+=(data[8*i]<<7|data[8*i+1]<<6|data[8*i+2]<<5|data[8*i+3]<<4|data[8*i+4]<<3|data[8*i+5]<<2|data[8*i+6]<<1|data[8*i+7]);
     }
     output+=(data[112]<<7|data[113]<<6);
+    System.out.println(output);
   }
 
 
