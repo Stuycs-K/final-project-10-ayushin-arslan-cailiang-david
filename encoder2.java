@@ -102,6 +102,7 @@ public class encoder2{
 
   public static int[] byteStreamer(int[] SESSION_KEY, int[] INITIALIZATION_VECTOR) {
     //make encode2 ARGS="4E2F4D7C1EB88B3A 000134 input.dat output.dat"
+    //make encode2 ARGS="72F4B23E781DD15C 000134 input.dat output.dat"
     System.out.println("KEY = ");
     for (int i = 0; i < SESSION_KEY.length; i++) {
       for (int b = 0; b < 8; b++) {

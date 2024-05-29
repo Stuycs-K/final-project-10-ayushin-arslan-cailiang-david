@@ -411,7 +411,9 @@ frame = str_to_hex(f);
 int main( int argc, char * argv [] ) {
 
 	// char *testkey="1223456789ABCDEF";
-	char *testkey="4E2F4D7C1EB88B3A";
+	// char *testkey="4E2F4D7C1EB88B3A"; // from interactive sim
+	// 01110010 11110100 10110010 00111110 01111000 00011101 11010001 01011100
+	char *testkey="72F4B23E781DD15C"; // reversed version
 	char *frame="134";
 	if (argc==1)
 	test1(testkey,frame);
