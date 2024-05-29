@@ -43,7 +43,7 @@ public class encoder2{
       //File plain = new File("The-A5-1-stream-cipher-algorithm.png");
       File plain = new File(args[2]);
       FileInputStream plainReader = new FileInputStream(plain);
-      File output = new File("output.dat");
+      File output = new File(args[3]);
       try {
         output.createNewFile();
       }
@@ -249,11 +249,11 @@ public class encoder2{
   }
 
   public static void hexify(int[] data) {
-    int output = 0;
-    for (int i = 0; i < 114; i++) {
-      output = output << 1 | data[i];
+    String output = "";
+    for (int i = 0; i < 14; i++) {
+     output+=(data[8*i]<<7|data[8*i+1]<<6|data[8*i+2]<<5|data[8*i+3]<<4|data[8*i+4]<<3|data[8*i+5]<<2|data[8*i+6]<<1|data[8*i+7]);
     }
-    System.out.println(Integer.toHexString(output));
+    output+=(data[112]<<7|data[113]<<6);
   }
 
 
