@@ -181,6 +181,50 @@ bit getbit() {
 	return parity(R1&R1OUT)^parity(R2&R2OUT)^parity(R3&R3OUT);
 }
 
+
+void printbinary(word n, int count) {
+	char* buff = calloc(count + 64, sizeof(char));
+	int i = 0;
+	while (n && i < count) {
+		if (n & 1) {
+			buff[i] = '1';
+			i++;
+		}
+		else {
+			buff[i] = '0';
+			i++;
+		}
+		n >>= 1;
+	}
+	for (i = 0; i < count; i++) {
+		if (buff[i] == 0) {
+			buff[i] = '0';
+		}
+	}
+	printf("%s\n", buff);
+}
+void printbinaryfrombyte(byte n, int count) {
+	char* buff = calloc(count + 64, sizeof(char));
+	int i = 0;
+	while (n && i < count) {
+		if (n & 1) {
+			buff[i] = '1';
+			i++;
+		}
+		else {
+			buff[i] = '0';
+			i++;
+		}
+		n >>= 1;
+	}
+	for (i = 0; i < count; i++) {
+		if (buff[i] == 0) {
+			buff[i] = '0';
+		}
+	}
+	printf("%s\n", buff);
+}
+
 /* Do the A5/1 key setup.  This routine accepts a 64-bit key and
  * a 22-bit frame number. */
 void keysetup(byte key[8], word frame) {
@@ -200,7 +244,30 @@ void keysetup(byte key[8], word frame) {
 		keybit = (key[i/8] >> (i&7)) & 1; /* The i-th bit of the
 key */
 		R1 ^= keybit; R2 ^= keybit; R3 ^= keybit;
+
+		if (i < 4) {
+			printf("Read %d\nKey: ", i);
+			printbinary(keybit, 1);
+			printf("R1: %x\n", R1);
+			printbinary(R1, 19);
+			printf("R2: %x\n", R2);
+			printbinary(R2, 22);
+			printf("R3: %x\n", R3);
+			printbinary(R3, 23);
+
+			printf("\n");
+		}
 	}
+
+	printf("stage 2\n");
+	printf("R1: %x\n", R1);
+	printbinary(R1, 19);
+	printf("R2: %x\n", R2);
+	printbinary(R2, 22);
+	printf("R3: %x\n", R3);
+	printbinary(R3, 23);
+
+	printf("\n");
 
 	/* Load the frame number into the shift
 	 * registers, LSB first,
@@ -306,6 +373,16 @@ frame = str_to_hex(f);
 	byte AtoB[15], BtoA[15];
 	int i, failed=0;
 
+	printf("Key = ");
+	for (i = 0; i < 8; i++) {
+		printf("%uc ", key[i]);
+	}
+	printf("\n");
+	for (i = 0; i < 8; i++) {
+		printbinaryfrombyte(key[i], 8);
+	}
+	printf("\n\n");
+
 	keysetup(key, frame);
 	run(AtoB, BtoA);
 
@@ -333,7 +410,8 @@ frame = str_to_hex(f);
 
 int main( int argc, char * argv [] ) {
 
-	char *testkey="1223456789ABCDEF";
+	// char *testkey="1223456789ABCDEF";
+	char *testkey="4E2F4D7C1EB88B3A";
 	char *frame="134";
 	if (argc==1)
 	test1(testkey,frame);

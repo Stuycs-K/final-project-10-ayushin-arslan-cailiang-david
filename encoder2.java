@@ -7,8 +7,8 @@ public class encoder2{
     // int[] INITIALIZATION_VECTOR = generateHex("000133",3);
     // int[] Stream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
     // System.out.println(Arrays.toString(Stream));
-    if (args.length != 3) {
-      System.out.println("Enter 3 items.");
+    if (args.length != 4) {
+      System.out.println("Enter 4 items.");
       System.out.println("KEY INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE");
       System.exit(0);
     }
@@ -101,6 +101,16 @@ public class encoder2{
   }
 
   public static int[] byteStreamer(int[] SESSION_KEY, int[] INITIALIZATION_VECTOR) {
+    //make encode2 ARGS="4E2F4D7C1EB88B3A 000134 input.dat output.dat"
+    System.out.println("KEY = ");
+    for (int i = 0; i < SESSION_KEY.length; i++) {
+      for (int b = 0; b < 8; b++) {
+        System.out.print(SESSION_KEY[i] >> b & 1);
+      }
+      System.out.print(" ");
+    }
+    System.out.println("\n");
+
     int[] LSFR1 = new int[19];
     int[] LSFR2 = new int[22];
     int[] LSFR3 = new int[23];
