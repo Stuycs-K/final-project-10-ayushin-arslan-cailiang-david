@@ -15,14 +15,14 @@ public class encoder {
   }
 
   public static String encode(int[] SESSION_KEY,long INITIALIZATION_VECTOR,String Message) {
-    System.out.println("KEY = ");
-    for (int i = 0; i < SESSION_KEY.length; i++) {
-      for (int b = 0; b < 8; b++) {
-        System.out.print(SESSION_KEY[i] >> b & 1);
-      }
-      System.out.print(" ");
-    }
-    System.out.println("\n");
+    // System.out.println("KEY = ");
+    // for (int i = 0; i < SESSION_KEY.length; i++) {
+    //   for (int b = 0; b < 8; b++) {
+    //     System.out.print(SESSION_KEY[i] >> b & 1);
+    //   }
+    //   System.out.print(" ");
+    // }
+    // System.out.println("\n");
 
     boolean[] LSFR1 = new boolean[19];
     boolean[] LSFR2 = new boolean[22];
