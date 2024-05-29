@@ -245,18 +245,18 @@ void keysetup(byte key[8], word frame) {
 key */
 		R1 ^= keybit; R2 ^= keybit; R3 ^= keybit;
 
-		if (i < 4) {
-			printf("Read %d\nKey: ", i);
-			printbinary(keybit, 1);
-			printf("R1: %x\n", R1);
-			printbinary(R1, 19);
-			printf("R2: %x\n", R2);
-			printbinary(R2, 22);
-			printf("R3: %x\n", R3);
-			printbinary(R3, 23);
+		// if (i < 4) {
+		// 	printf("Read %d\nKey: ", i);
+		// 	printbinary(keybit, 1);
+		// 	printf("R1: %x\n", R1);
+		// 	printbinary(R1, 19);
+		// 	printf("R2: %x\n", R2);
+		// 	printbinary(R2, 22);
+		// 	printf("R3: %x\n", R3);
+		// 	printbinary(R3, 23);
 
-			printf("\n");
-		}
+		// 	printf("\n");
+		// }
 	}
 
 	printf("stage 2\n");
@@ -269,17 +269,27 @@ key */
 
 	printf("\n");
 
-	/* Load the frame number into the shift
-	 * registers, LSB first,
-	 * clocking each register once for every
-	 * key bit loaded.  (The usual clock
-	 * control rule is still disabled.) */
-	for (i=0; i<22; i++) {
-		clockallthree(); /* always clock */
-		framebit = (frame >> i) & 1; /* The i-th bit of the frame #
-*/
-		R1 ^= framebit; R2 ^= framebit; R3 ^= framebit;
-	}
+// 	/* Load the frame number into the shift
+// 	 * registers, LSB first,
+// 	 * clocking each register once for every
+// 	 * key bit loaded.  (The usual clock
+// 	 * control rule is still disabled.) */
+// 	for (i=0; i<22; i++) {
+// 		clockallthree(); /* always clock */
+// 		framebit = (frame >> i) & 1; /* The i-th bit of the frame #
+// */
+// 		R1 ^= framebit; R2 ^= framebit; R3 ^= framebit;
+// 	}
+
+	// printf("after reading frame number\n");
+	// printf("R1: %x\n", R1);
+	// printbinary(R1, 19);
+	// printf("R2: %x\n", R2);
+	// printbinary(R2, 22);
+	// printf("R3: %x\n", R3);
+	// printbinary(R3, 23);
+
+	// printf("\n");
 
 	/* Run the shift registers for 100 clocks
 	 * to mix the keying material and frame number
@@ -289,7 +299,28 @@ key */
 	 * rule from now on. */
 	for (i=0; i<100; i++) {
 		clock();
+		if ( i < 4 ) {
+			printf("after %d clocks\n", i+1);
+			printf("R1: %x\n", R1);
+			printbinary(R1, 19);
+			printf("R2: %x\n", R2);
+			printbinary(R2, 22);
+			printf("R3: %x\n", R3);
+			printbinary(R3, 23);
+
+			printf("\n");
+		}
 	}
+
+	printf("after 100 clocks\n");
+	printf("R1: %x\n", R1);
+	printbinary(R1, 19);
+	printf("R2: %x\n", R2);
+	printbinary(R2, 22);
+	printf("R3: %x\n", R3);
+	printbinary(R3, 23);
+
+	printf("\n");
 
 	/* Now the key is properly set up. */
 }

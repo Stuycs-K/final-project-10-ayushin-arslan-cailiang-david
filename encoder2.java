@@ -132,10 +132,10 @@ public class encoder2{
         // System.out.println("");
       }
     }
-    // debugger(LSFR1,start1);
-    // debugger(LSFR2,start2);
-    // debugger(LSFR3,start3);
-    // System.out.println("");
+    debugger(LSFR1,start1);
+    debugger(LSFR2,start2);
+    debugger(LSFR3,start3);
+    System.out.println("");
     ////
     ////
     // for (int i = 2; i < 8; i++) {
