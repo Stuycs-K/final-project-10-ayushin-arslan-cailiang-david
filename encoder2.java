@@ -132,34 +132,35 @@ public class encoder2{
         // System.out.println("");
       }
     }
-    debugger(LSFR1,start1);
-    debugger(LSFR2,start2);
-    debugger(LSFR3,start3);
-    System.out.println("");
-    ////
-    ////
-    // for (int i = 2; i < 8; i++) {
-    //   LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-    //   start1 = Math.floorMod(start1-1,19);
-    //   LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-    //   start2 = Math.floorMod(start2-1,22);
-    //   LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-    //   start3 = Math.floorMod(start3-1,23);
-    // }
-    // for (int k = 1; k < 3; k++) {
-    //   for (int i = 0; i < 8; i++) {
-    //     LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-    //     start1 = (start1+18)%19;
-    //     LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-    //     start2 = (start2+21)%22;
-    //     LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-    //     start3 = (start3+22)%23;
-    //   }
-    // }
     // debugger(LSFR1,start1);
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
     // System.out.println("");
+    ////
+    ////
+    for (int i = 2; i < 8; i++) {
+      LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+      start1 = Math.floorMod(start1-1,19);
+      LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+      start2 = Math.floorMod(start2-1,22);
+      LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+      start3 = Math.floorMod(start3-1,23);
+    }
+    for (int k = 1; k < 3; k++) {
+      for (int i = 0; i < 8; i++) {
+        LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+        start1 = (start1+18)%19;
+        LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+        start2 = (start2+21)%22;
+        LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+        start3 = (start3+22)%23;
+      }
+    }
+    System.out.println("after reading frame number\n");
+    debugger(LSFR1,start1);
+    debugger(LSFR2,start2);
+    debugger(LSFR3,start3);
+    System.out.println("");
     ////
     ////
     // for (int i = 0; i < 100; i++) {
