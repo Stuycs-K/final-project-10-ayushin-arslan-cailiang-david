@@ -18,10 +18,12 @@ INITIALIZATION_VECTOR must start in: 0,4,8,c,C
 
 The 2 largest bits are discarded automatically.
 
-1) make encode KEY_STRING INITIALIZATION_VECTOR CLEARTEXT_FILE ==> returns a file known as output.dat
+1) make encode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE
 
-Sample: make encode2 ARGS="1223456789ABCDEF 000133 input.dat"
+Sample: make encode2 ARGS="1223456789ABCDEF 000133 input.dat output.dat"
 
-2) make decode KEY_STRING INITIALIZATION_VECTOR CIPHERTEXT_FILE ==> returns a file known as output.dat
+2) make decode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE
+
+Sample: make encode2 ARGS="1223456789ABCDEF 000133 input.dat output.dat"
 
 3) Read PRESENTATION.md for History on GSM and A5/1
