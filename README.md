@@ -24,6 +24,6 @@ Sample: make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"
 
 2) make decode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE
 
-Sample: make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"
+Sample: make decode ARGS="1223456789ABCDEF 000133 input.dat output.dat"
 
 3) Read PRESENTATION.md for History on GSM and A5/1
