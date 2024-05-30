@@ -69,7 +69,7 @@ public class encoder2{
       int[] keyStream = new int[plainText.size()*8];
       for (int i = 0; i < keyStream.length+228; i+=228) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
-        hexify(temp2);
+        HexStringer(temp2);
         int rand = random.nextInt(INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]);
         INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
         INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
@@ -132,21 +132,14 @@ public class encoder2{
         // System.out.println("");
       }
     }
-    // debugger(LSFR1,start1);
-    // debugger(LSFR2,start2);
-    // debugger(LSFR3,start3);
-    // System.out.println("");
+    System.out.println("after reading key");
+    debugger(LSFR1,start1);
+    debugger(LSFR2,start2);
+    debugger(LSFR3,start3);
+    System.out.println("");
+    //
     ////
-    ////
-    for (int i = 2; i < 8; i++) {
-      LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-      start1 = Math.floorMod(start1-1,19);
-      LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-      start2 = Math.floorMod(start2-1,22);
-      LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-      start3 = Math.floorMod(start3-1,23);
-    }
-    for (int k = 1; k < 3; k++) {
+    for (int k = 2; k > 0; k--) {
       for (int i = 0; i < 8; i++) {
         LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
         start1 = (start1+18)%19;
@@ -156,6 +149,14 @@ public class encoder2{
         start3 = (start3+22)%23;
       }
     }
+    for (int i = 0; i < 6; i++) {
+      LSFR1[Math.floorMod(start1-1,19)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+      start1 = Math.floorMod(start1-1,19);
+      LSFR2[Math.floorMod(start2-1,22)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+      start2 = Math.floorMod(start2-1,22);
+      LSFR3[Math.floorMod(start3-1,23)] = (INITIALIZATION_VECTOR[0] >> i & 1) ^ LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+      start3 = Math.floorMod(start3-1,23);
+    }
     System.out.println("after reading frame number\n");
     debugger(LSFR1,start1);
     debugger(LSFR2,start2);
@@ -163,28 +164,29 @@ public class encoder2{
     System.out.println("");
     ////
     ////
-    // for (int i = 0; i < 100; i++) {
-    //   int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
-    //   int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
-    //   int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
-    //   int maj_bit = (clock1+clock2+clock3)/2;
-    //   if (clock1 == maj_bit) {
-    //     LSFR1[(start1+18)%19] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
-    //     start1 = (start1+18)%19;
-    //   }
-    //   if (clock2 == maj_bit) {
-    //     LSFR2[(start2+21)%22] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
-    //     start2 = (start2+21)%22;
-    //   }
-    //   if (clock3 == maj_bit) {
-    //     LSFR3[(start3+22)%23] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
-    //     start3 = (start3+22)%23;
-    //   }
-    // }
-    // debugger(LSFR1,start1);
-    // debugger(LSFR2,start2);
-    // debugger(LSFR3,start3);
-    // System.out.println("");
+    for (int i = 0; i < 100; i++) {
+      int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
+      int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
+      int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
+      int maj_bit = (clock1+clock2+clock3)/2;
+      if (clock1 == maj_bit) {
+        LSFR1[(start1+18)%19] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
+        start1 = (start1+18)%19;
+      }
+      if (clock2 == maj_bit) {
+        LSFR2[(start2+21)%22] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
+        start2 = (start2+21)%22;
+      }
+      if (clock3 == maj_bit) {
+        LSFR3[(start3+22)%23] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
+        start3 = (start3+22)%23;
+      }
+    }
+    System.out.println("after 100 clocks");
+    debugger(LSFR1,start1);
+    debugger(LSFR2,start2);
+    debugger(LSFR3,start3);
+    System.out.println("");
     ////
     ////
     int[] output = new int[228];
@@ -194,20 +196,40 @@ public class encoder2{
       int clock3 = LSFR3[Math.floorMod(start3 + 10, 23)];
       int maj_bit = (clock1+clock2+clock3)/2;
       if (clock1 == maj_bit) {
-        output[i] ^= LSFR1[(start1+18)%19];
         LSFR1[(start1+18)%19] = LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
         start1 = (start1+18)%19;
       }
       if (clock2 == maj_bit) {
-        output[i] ^= LSFR2[(start2+21)%22];
         LSFR2[(start2+21)%22] = LSFR2[(start2+20)%22] ^ LSFR2[(start2+21)%22];
         start2 = (start2+21)%22;
-
       }
       if (clock3 == maj_bit) {
-        output[i] ^= LSFR3[(start3+22)%23];
         LSFR3[(start3+22)%23] = LSFR3[(start3+7)%23] ^ LSFR3[(start3+20)%23] ^ LSFR3[(start3+21)%23] ^ LSFR3[(start3+22)%23];
         start3 = (start3+22)%23;
+      }
+      output[i] ^= LSFR1[(start1+18)%19];
+      output[i] ^= LSFR2[(start2+21)%22];
+      output[i] ^= LSFR3[(start3+22)%23];
+      if (i == 1) {
+        System.out.println("one loop");
+        debugger(LSFR1,start1);
+        debugger(LSFR2,start2);
+        debugger(LSFR3,start3);
+        System.out.println("Output: "+output[i]);
+      }
+      if (i == 2) {
+        System.out.println("two loop");
+        debugger(LSFR1,start1);
+        debugger(LSFR2,start2);
+        debugger(LSFR3,start3);
+        System.out.println("Output: "+output[i]);
+      }
+      if (i == 5) {
+        System.out.println("five loop");
+        debugger(LSFR1,start1);
+        debugger(LSFR2,start2);
+        debugger(LSFR3,start3);
+        System.out.println("Output: "+output[i]);
       }
     }
     return output;
@@ -249,14 +271,25 @@ public class encoder2{
     System.out.println(Arrays.toString(output));
   }
 
-  public static void hexify(int[] data) {
-    String output = "";
-    for (int i = 0; i < 14; i++) {
-     output+=(data[8*i]<<7|data[8*i+1]<<6|data[8*i+2]<<5|data[8*i+3]<<4|data[8*i+4]<<3|data[8*i+5]<<2|data[8*i+6]<<1|data[8*i+7]);
+  public static void HexStringer(int[] data) {
+    int[] outNum = new int[15];
+    for (int i = 0; i < 114; i++) {
+      outNum[i/8] = outNum[i/8] << 1 | data[i];
     }
-    output+=(data[112]<<7|data[113]<<6);
-    System.out.println(output);
-  }
-
+    String[] outHex = new String[15];
+    for (int i = 0; i < 15; i++) {
+      outHex[i] = Integer.toHexString(outNum[i]);
+    }
+    System.out.println(Arrays.toString(outHex));
+    outNum = new int[15];
+    for (int i = 114; i < 228; i++) {
+      outNum[(i-114)/8] = outNum[(i-114)/8] << 1 | data[i];
+    }
+    outHex = new String[15];
+    for (int i = 0; i < 15; i++) {
+      outHex[i] = Integer.toHexString(outNum[i]);
+    }
+    System.out.println(Arrays.toString(outHex));
+}
 
 }

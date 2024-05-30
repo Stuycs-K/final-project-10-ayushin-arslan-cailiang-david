@@ -38,7 +38,7 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
- * 
+ *
  * The license and distribution terms for any publicly available version or
  * derivative of this code cannot be changed.  i.e. this code cannot simply be
  * copied and put under another distribution license
@@ -47,7 +47,7 @@
  * Background: The Global System for Mobile communications is the most widely
  * deployed cellular telephony system in the world. GSM makes use of
  * four core cryptographic algorithms, neither of which has been published by
- * the GSM MOU. This failure to subject the algorithms to public review is all  
+ * the GSM MOU. This failure to subject the algorithms to public review is all
  * the more puzzling given that over 100 million GSM
  * subscribers are expected to rely on the claimed security of the system.
  *
@@ -81,7 +81,7 @@
  * A variant of A5, while not A5/1 itself, has been estimated to have a
  * work factor of well below 54 bits. See http://jya.com/crack-a5.htm for
  * background information and references.
- * 
+ *
  * With COMP128 broken and A5/1 published below, we will now turn our attention
  * to A5/2. The latter has been acknowledged by the GSM community to have
  * been specifically designed by intelligence agencies for lack of security.
@@ -319,19 +319,19 @@ key */
 		// }
 	}
 
-	// printf("after 100 clocks\n");
-	// printf("R1: %x\n", R1);
-	// printbinary(R1, 19);
-	// printf("R2: %x\n", R2);
-	// printbinary(R2, 22);
-	// printf("R3: %x\n", R3);
-	// printbinary(R3, 23);
+	printf("after 100 clocks\n");
+	printf("R1: %x\n", R1);
+	printbinary(R1, 19);
+	printf("R2: %x\n", R2);
+	printbinary(R2, 22);
+	printf("R3: %x\n", R3);
+	printbinary(R3, 23);
 
 	// printf("\n");
 
 	/* Now the key is properly set up. */
 }
-	
+
 /* Generate output.  We generate 228 bits of
  * keystream output.  The first 114 bits is for
  * the A->B frame; the next 114 bits is for the
@@ -344,12 +344,45 @@ void run(byte AtoBkeystream[], byte BtoAkeystream[]) {
 	/* Zero out the output buffers. */
 	for (i=0; i<=113/8; i++)
 		AtoBkeystream[i] = BtoAkeystream[i] = 0;
-	
+
 	/* Generate 114 bits of keystream for the
 	 * A->B direction.  Store it, MSB first. */
 	for (i=0; i<114; i++) {
 		clock();
 		AtoBkeystream[i/8] |= getbit() << (7-(i&7));
+		if (i == 1) {
+		printf("one loop\n");
+		printf("R1: %x\n", R1);
+		printbinary(R1, 19);
+		printf("R2: %x\n", R2);
+		printbinary(R2, 22);
+		printf("R3: %x\n", R3);
+		printbinary(R3, 23);
+		printf("Output: %x\n", getbit());
+		printf("\n");
+	}
+	if (i == 2) {
+	printf("two loop\n");
+	printf("R1: %x\n", R1);
+	printbinary(R1, 19);
+	printf("R2: %x\n", R2);
+	printbinary(R2, 22);
+	printf("R3: %x\n", R3);
+	printbinary(R3, 23);
+	printf("Output: %x\n", getbit());
+	printf("\n");
+}
+if (i == 5) {
+printf("five loop\n");
+printf("R1: %x\n", R1);
+printbinary(R1, 19);
+printf("R2: %x\n", R2);
+printbinary(R2, 22);
+printf("R3: %x\n", R3);
+printbinary(R3, 23);
+printf("Output: %x\n", getbit());
+printf("\n");
+}
 	}
 
 	/* Generate 114 bits of keystream for the
@@ -376,7 +409,7 @@ unsigned int str_to_hex(char *str)
   unsigned int nibble;
   char *s;
   unsigned int rv = 0;
- 
+
   for(s = str + len - 1;s >= str;s -= 2)
   {
     nibble = hexchartovalue(*s);
@@ -384,7 +417,7 @@ unsigned int str_to_hex(char *str)
       nibble |= hexchartovalue(*(s - 1)) << 4;
     rv |= nibble << (((len - (s - str)) / 2) * 8);
   }
- 
+
   return rv;
 }
 
@@ -402,7 +435,7 @@ hexstring=hex;
         sscanf(hexstring+2*j, "%2X", &n);
         key[j] = (char)n;
     }
- 
+
 frame = str_to_hex(f);
 
 
@@ -441,18 +474,18 @@ frame = str_to_hex(f);
 	for (i=0; i<15; i++)
 		printf("%02X", BtoA[i]);
 	printf("\n");
-	
+
 
 }
 
 
 int main( int argc, char * argv [] ) {
 
-	// char *testkey="1223456789ABCDEF";
+	 char *testkey="1223456789ABCDEF";
 	// char *testkey="4E2F4D7C1EB88B3A"; // from interactive sim
 	// 01110010 11110100 10110010 00111110 01111000 00011101 11010001 01011100
-	char *testkey="72F4B23E781DD15C"; // reversed version
-	char *frame="134";
+	//char *testkey="72F4B23E781DD15C"; // reversed version
+	char *frame="133";
 	if (argc==1)
 	test1(testkey,frame);
 	else if (argc==3)
@@ -462,6 +495,3 @@ int main( int argc, char * argv [] ) {
 }
 	return 0;
 }
-
-
-
