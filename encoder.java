@@ -125,12 +125,12 @@ public class encoder{
         // System.out.println("");
       }
     }
-    // System.out.println("after reading key");
-    // debugger(LSFR1,start1);
-    // debugger(LSFR2,start2);
-    // debugger(LSFR3,start3);
-    // System.out.println("");
-    //
+    System.out.println("after reading key");
+    debugger(LSFR1,start1);
+    debugger(LSFR2,start2);
+    debugger(LSFR3,start3);
+    System.out.println("");
+    
     for (int k = 2; k > 0; k--) {
       for (int i = 0; i < 8; i++) {
         LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];

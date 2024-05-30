@@ -279,22 +279,22 @@ key */
 		framebit = (frame >> i) & 1; /* The i-th bit of the frame #
 */
 		R1 ^= framebit; R2 ^= framebit; R3 ^= framebit;
-		printf("after %d\n", i);
-		printf("R1: %x\n", R1);
-		printbinary(R1, 19);
-		printf("R2: %x\n", R2);
-		printbinary(R2, 22);
-		printf("R3: %x\n", R3);
-		printbinary(R3, 23);
+		// printf("after %d\n", i);
+		// printf("R1: %x\n", R1);
+		// printbinary(R1, 19);
+		// printf("R2: %x\n", R2);
+		// printbinary(R2, 22);
+		// printf("R3: %x\n", R3);
+		// printbinary(R3, 23);
 	}
 
-	printf("after reading frame number\n");
-	printf("R1: %x\n", R1);
-	printbinary(R1, 19);
-	printf("R2: %x\n", R2);
-	printbinary(R2, 22);
-	printf("R3: %x\n", R3);
-	printbinary(R3, 23);
+	// printf("after reading frame number\n");
+	// printf("R1: %x\n", R1);
+	// printbinary(R1, 19);
+	// printf("R2: %x\n", R2);
+	// printbinary(R2, 22);
+	// printf("R3: %x\n", R3);
+	// printbinary(R3, 23);
 
 	// printf("\n");
 
@@ -319,13 +319,13 @@ key */
 		// }
 	}
 
-	printf("after 100 clocks\n");
-	printf("R1: %x\n", R1);
-	printbinary(R1, 19);
-	printf("R2: %x\n", R2);
-	printbinary(R2, 22);
-	printf("R3: %x\n", R3);
-	printbinary(R3, 23);
+	// printf("after 100 clocks\n");
+	// printf("R1: %x\n", R1);
+	// printbinary(R1, 19);
+	// printf("R2: %x\n", R2);
+	// printbinary(R2, 22);
+	// printf("R3: %x\n", R3);
+	// printbinary(R3, 23);
 
 	// printf("\n");
 
@@ -481,10 +481,10 @@ frame = str_to_hex(f);
 
 int main( int argc, char * argv [] ) {
 
-	 char *testkey="1223456789ABCDEF";
+	//  char *testkey="1223456789ABCDEF";
 	// char *testkey="4E2F4D7C1EB88B3A"; // from interactive sim
 	// 01110010 11110100 10110010 00111110 01111000 00011101 11010001 01011100
-	//char *testkey="72F4B23E781DD15C"; // reversed version
+	char *testkey="72F4B23E781DD15C"; // reversed version
 	char *frame="133";
 	if (argc==1)
 	test1(testkey,frame);
