@@ -33,3 +33,8 @@ info
 - tested both of our versions and the c version with same key and vector
 - reversed the bytes of key because our versions was reading each byte starting from least significant bit, now first step matches
 
+### 5/29/24
+
+- fixed last byte of key stream by padding with 0s (114 bits not divisible by 8)
+- our encoder step 5 generates correct key stream
+- small fix to print format
