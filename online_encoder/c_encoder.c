@@ -259,15 +259,15 @@ key */
 		// }
 	}
 
-	printf("stage 2\n");
-	printf("R1: %x\n", R1);
-	printbinary(R1, 19);
-	printf("R2: %x\n", R2);
-	printbinary(R2, 22);
-	printf("R3: %x\n", R3);
-	printbinary(R3, 23);
+	// printf("stage 2\n");
+	// printf("R1: %x\n", R1);
+	// printbinary(R1, 19);
+	// printf("R2: %x\n", R2);
+	// printbinary(R2, 22);
+	// printf("R3: %x\n", R3);
+	// printbinary(R3, 23);
 
-	printf("\n");
+	// printf("\n");
 
 	/* Load the frame number into the shift
 	 * registers, LSB first,
@@ -350,30 +350,41 @@ void run(byte AtoBkeystream[], byte BtoAkeystream[]) {
 	for (i=0; i<114; i++) {
 		clock();
 		AtoBkeystream[i/8] |= getbit() << (7-(i&7));
-		if (i == 1) {
-		printf("one loop\n");
-		printf("R1: %x\n", R1);
-		printbinary(R1, 19);
-		printf("R2: %x\n", R2);
-		printbinary(R2, 22);
-		printf("R3: %x\n", R3);
-		printbinary(R3, 23);
-		printf("Output: %x\n", getbit());
-		printf("\n");
-	}
-	if (i == 2) {
-	printf("two loop\n");
-	printf("R1: %x\n", R1);
-	printbinary(R1, 19);
-	printf("R2: %x\n", R2);
-	printbinary(R2, 22);
-	printf("R3: %x\n", R3);
-	printbinary(R3, 23);
-	printf("Output: %x\n", getbit());
-	printf("\n");
-}
-if (i == 5) {
-printf("five loop\n");
+	// 	if (i == 1) {
+	// 	printf("one loop\n");
+	// 	printf("R1: %x\n", R1);
+	// 	printbinary(R1, 19);
+	// 	printf("R2: %x\n", R2);
+	// 	printbinary(R2, 22);
+	// 	printf("R3: %x\n", R3);
+	// 	printbinary(R3, 23);
+	// 	printf("Output: %x\n", getbit());
+	// 	printf("\n");
+	// }
+// 	if (i == 2) {
+// 	printf("two loop\n");
+// 	printf("R1: %x\n", R1);
+// 	printbinary(R1, 19);
+// 	printf("R2: %x\n", R2);
+// 	printbinary(R2, 22);
+// 	printf("R3: %x\n", R3);
+// 	printbinary(R3, 23);
+// 	printf("Output: %x\n", getbit());
+// 	printf("\n");
+// }
+// if (i == 5) {
+// printf("five loop\n");
+// printf("R1: %x\n", R1);
+// printbinary(R1, 19);
+// printf("R2: %x\n", R2);
+// printbinary(R2, 22);
+// printf("R3: %x\n", R3);
+// printbinary(R3, 23);
+// printf("Output: %x\n", getbit());
+// printf("\n");
+// }
+if (i == 113) {
+printf("113 loop\n");
 printf("R1: %x\n", R1);
 printbinary(R1, 19);
 printf("R2: %x\n", R2);
@@ -485,7 +496,8 @@ int main( int argc, char * argv [] ) {
 	// char *testkey="4E2F4D7C1EB88B3A"; // from interactive sim
 	// 01110010 11110100 10110010 00111110 01111000 00011101 11010001 01011100
 	char *testkey="72F4B23E781DD15C"; // reversed version
-	char *frame="133";
+	// char *frame="133";
+	char *frame = "134";
 	if (argc==1)
 	test1(testkey,frame);
 	else if (argc==3)
