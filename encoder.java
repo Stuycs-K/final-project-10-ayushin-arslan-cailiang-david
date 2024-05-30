@@ -228,7 +228,7 @@ public class encoder{
       //   debugger(LSFR3,start3);
       //   System.out.println("Output: "+output[i]);
       // }
-      if (i >= 210 && i < 218) {
+      if (i >= 226 && i < 228) {
         System.out.println(i + " loop");
         debugger(LSFR1,start1);
         debugger(LSFR2,start2);
@@ -294,7 +294,7 @@ public class encoder{
     for (int i = 114; i < 228; i++) {
       outNum[(i-114)/8] = outNum[(i-114)/8] << 1 | data[i];
     }
-    for (int i = 228; i < 232; i++) {
+    for (int i = 228; i < 234; i++) {
       outNum[(i-114)/8] = outNum[(i-114)/8] << 1 | 0;
     }
     outHex = "";
