@@ -22,6 +22,14 @@ Throw together an implementation of A5/1. It doesn't follow the C version or the
 
 Did research for presentation and started writing presentation.
 
+### 5/28/2024
+
+Continue Debugging algorithm (Had issues with little endian vs big endian)
+
+### 5/29/2024
+
+Got algorithm to work with reference algorithm.
+
 ## GROUP MEMBER 2
 
 ### date x

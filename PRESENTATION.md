@@ -181,11 +181,11 @@ of two or more registers.
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image10.png" alt="Generate 114 bit RAND" width="550">
 
-8) Save and xor the last bit of all the registers. Perform Steps 7-9 again.
-9) Repeat Step 10, another 227 times so you get a 228 bit keyStream.
+8) Perform Steps 7-9 again.  Save and xor the last bit of *all* the registers, not just the ones that got rotated.
+9) Repeat Step 10, another 227 times so you get a 228 bit key stream.
 10) Xor this 228 bit keyStream with the first 228 bits of your plaintext.
 
-11) Add 1 to your 22-bit initialization vector.
+11) Randomly generate a new Initialization Vector. We used java random with the first Initialization Vector acting as a seed.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
 
 # Resources
