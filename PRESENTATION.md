@@ -68,7 +68,7 @@ In 1998, COMP128 was reversed engineered and fully published online. COMP128 tak
 output. COMP128 is considered a hashing algorithm as it is extremely difficult to go back unless you already know both parts: the key and
 the RAND. The RAND is a challenge code sent from the cell tower. There were 3 versions of the algorithm named -1, -2, and -3. -1 is
 considered extremely weak but -2 and -3 are considered weak. AES based algorithms have replaced the COMP128 algorithms almost completely.
-The COMP128 algorithm's main problem is the small output and weak diffusion.  
+The COMP128 algorithm's main problem is the small output and weak diffusion.
 
 # Confidentiality in GSM and GSM-derived protocols (aka most modern protocols EDGE, 3G, and 4G)
 
@@ -124,7 +124,7 @@ GSM Band    Uplink (MHz)       Downlink (MHz)
 
 GSM-850     824.2 – 848.8      869.2 – 893.8
 
-PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8 	
+PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
 
@@ -154,12 +154,12 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 
 2) We shift all the registers up by one and insert the new xored bit at index 0.
 
-3) We repeat this process for the entire 64-bit key.
+3) We repeat this process for the entire 64-bit key; start with the least significant bit of each byte and go through the bytes linearly left to right.
 
 <summary>Insert Vector Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image5.png" alt="Insert Vector Into Registers" width="550">
 
-4) We repeat the process for the key on the initialization vector.
+4) We repeat the process for the initialization vector; start with the least significant bit of each byte and go through the bytes linearly right to left.
 
 <summary>Outcome after Key & Vector Insertion</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image8.png" alt="Outcome after Key & Vector Insertion" width="550">
@@ -183,7 +183,7 @@ of two or more registers.
 
 8) Perform Steps 7-9 again.  Save and xor the last bit of *all* the registers, not just the ones that got rotated.
 9) Repeat Step 10, another 227 times so you get a 228 bit key stream.
-10) Xor this 228 bit keyStream with the first 228 bits of your plaintext.
+10) Xor this 228 bit key stream with the first 228 bits of your plaintext.
 
 11) Randomly generate a new Initialization Vector. We used java random with the first Initialization Vector acting as a seed.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
