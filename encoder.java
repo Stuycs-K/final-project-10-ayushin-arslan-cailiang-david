@@ -221,7 +221,14 @@ public class encoder{
       //   debugger(LSFR3,start3);
       //   System.out.println("Output: "+output[i]);
       // }
-      if (i >= 112 && i < 114) {
+      // if (i >= 112 && i < 114) {
+      //   System.out.println(i + " loop");
+      //   debugger(LSFR1,start1);
+      //   debugger(LSFR2,start2);
+      //   debugger(LSFR3,start3);
+      //   System.out.println("Output: "+output[i]);
+      // }
+      if (i >= 210 && i < 218) {
         System.out.println(i + " loop");
         debugger(LSFR1,start1);
         debugger(LSFR2,start2);
@@ -278,7 +285,8 @@ public class encoder{
     }
     String outHex = "";
     for (int i = 0; i < 15; i++) {
-      outHex+=""+Integer.toHexString(outNum[i]);
+      // outHex+=""+Integer.toHexString(outNum[i]);
+      outHex += String.format("%1$02X",outNum[i]);
     }
 
     System.out.println(outHex);
@@ -291,7 +299,8 @@ public class encoder{
     }
     outHex = "";
     for (int i = 0; i < 15; i++) {
-      outHex+=""+Integer.toHexString(outNum[i]);
+      // outHex+=""+Integer.toHexString(outNum[i]);
+      outHex += String.format("%1$02X",outNum[i]);
     }
     System.out.println(outHex+"\n");
 }
