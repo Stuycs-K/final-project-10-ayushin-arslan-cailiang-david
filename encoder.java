@@ -273,18 +273,21 @@ public class encoder{
     for (int i = 0; i < 114; i++) {
       outNum[i/8] = outNum[i/8] << 1 | data[i];
     }
-    System.out.print("outNum ");
+    for (int i = 114; i < 120; i++) {
+      outNum[i/8] = outNum[i/8] << 1 | 0;
+    }
     String outHex = "";
     for (int i = 0; i < 15; i++) {
       outHex+=""+Integer.toHexString(outNum[i]);
-      System.out.print(outNum[i]);
-      System.out.print(" ");
     }
-    System.out.println("\n");
+
     System.out.println(outHex);
     outNum = new int[15];
     for (int i = 114; i < 228; i++) {
       outNum[(i-114)/8] = outNum[(i-114)/8] << 1 | data[i];
+    }
+    for (int i = 228; i < 232; i++) {
+      outNum[(i-114)/8] = outNum[(i-114)/8] << 1 | 0;
     }
     outHex = "";
     for (int i = 0; i < 15; i++) {
