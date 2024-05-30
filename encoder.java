@@ -43,7 +43,6 @@ public class encoder{
     System.out.println("\n");
     ////
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
-    Random random = new Random((long) (INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]));
     try {
       ArrayList<Integer> plainText = new ArrayList<Integer> ();
       File plain = new File(args[2]);
@@ -75,10 +74,10 @@ public class encoder{
       for (int i = 0; i < keyStream.length+228; i+=228) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
         HexStringer(temp2);
-        int rand = random.nextInt(INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]);
-        INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
-        INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
-        INITIALIZATION_VECTOR[2] = rand | 0xFF;
+        int newVector = ((INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]) +1)   % 8388607;
+        INITIALIZATION_VECTOR[0] = newVector >> 16 | 0xFF;
+        INITIALIZATION_VECTOR[1] = newVector >> 8 | 0xFF;
+        INITIALIZATION_VECTOR[2] = newVector | 0xFF;
         for (int k = 0; k < 228; k++) {
           if (i+k < keyStream.length) {
           keyStream[i+k] = temp2[k];
