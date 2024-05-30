@@ -130,7 +130,7 @@ public class encoder{
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
     // System.out.println("");
-    
+
     for (int k = 2; k > 0; k--) {
       for (int i = 0; i < 8; i++) {
         LSFR1[(start1+18)%19] = (INITIALIZATION_VECTOR[k] >> i & 1) ^ LSFR1[(start1+13)%19] ^ LSFR1[(start1+16)%19] ^ LSFR1[(start1+17)%19] ^ LSFR1[(start1+18)%19];
@@ -154,7 +154,7 @@ public class encoder{
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
     // System.out.println("");
-    
+
     for (int i = 0; i < 100; i++) {
       int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
       int clock2 = LSFR2[Math.floorMod(start2 + 10, 22)];
@@ -178,7 +178,7 @@ public class encoder{
     // debugger(LSFR2,start2);
     // debugger(LSFR3,start3);
     // System.out.println("");
-    
+
     int[] output = new int[228];
     for (int i = 0; i < 228; i++) {
       int clock1 = LSFR1[Math.floorMod(start1 + 8, 19)];
@@ -228,13 +228,13 @@ public class encoder{
       //   debugger(LSFR3,start3);
       //   System.out.println("Output: "+output[i]);
       // }
-      if (i >= 226 && i < 228) {
-        System.out.println(i + " loop");
-        debugger(LSFR1,start1);
-        debugger(LSFR2,start2);
-        debugger(LSFR3,start3);
-        System.out.println("Output: "+output[i]);
-      }
+      // if (i >= 226 && i < 228) {
+      //   System.out.println(i + " loop");
+      //   debugger(LSFR1,start1);
+      //   debugger(LSFR2,start2);
+      //   debugger(LSFR3,start3);
+      //   System.out.println("Output: "+output[i]);
+      // }
     }
     return output;
   }
