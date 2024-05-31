@@ -72,14 +72,14 @@ public class encoder{
         }
       }
       int[] keyStream = new int[plainText.size()*8];
-      for (int i = 0; i < (keyStream.length/228)*228+228; i+=228) {
+      for (int i = 0; i < (keyStream.length/114)*114+114; i+=114) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
         HexStringer(temp2);
         int rand = random.nextInt(INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]);
         INITIALIZATION_VECTOR[0] = rand >> 16 | 0xFF;
         INITIALIZATION_VECTOR[1] = rand >> 8 | 0xFF;
         INITIALIZATION_VECTOR[2] = rand | 0xFF;
-        for (int k = 0; k < 228; k++) {
+        for (int k = 0; k < 114; k++) {
           if (i+k < keyStream.length) {
           keyStream[i+k] = temp2[k];
         }
