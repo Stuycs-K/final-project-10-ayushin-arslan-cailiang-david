@@ -7,5 +7,8 @@ if !([ -p $PIPE ]); then
     mkfifo $PIPE;
 fi
 
-cat | java test > $PIPE
+
+gcc -o input_a input.c
+
+./input_a | java test > $PIPE
 

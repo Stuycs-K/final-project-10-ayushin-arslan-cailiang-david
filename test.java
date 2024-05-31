@@ -20,7 +20,12 @@ public class test {
             String line = "";
             while (line != null) {
                 line = stdin.readLine();
-                System.out.println("received " + line);
+                if (args.length == 1) {
+                    System.out.println(args[0] + " received " + line);
+                }
+                else {
+                    System.out.println("received " + line);
+                }
             }
 
         }
