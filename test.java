@@ -22,10 +22,10 @@ public class test {
                 line = stdin.readLine();
                 if (args.length == 2) {
                     if (args[1].equals("encode")) {
-                        System.out.println(args[0] + " encoded" + line);
+                        System.out.println(args[0] + " encoded " + line);
                     }
                     else {
-                        System.out.println(args[0] + " decoded" + line);
+                        System.out.println(args[0] + " decoded " + line);
                     }
                 }
             }

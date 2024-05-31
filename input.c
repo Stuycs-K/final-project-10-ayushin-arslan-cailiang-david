@@ -17,12 +17,16 @@ void err(int i, char*message){
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     setlinebuf(stdout);
 
     fd_set read_fds;
 
-    char const * pipe_location = "mario";
+    if (argc != 2) {
+        printf("args\n");
+        exit(1);
+    }
+    char * pipe_location = argv[1];
 
     int pipe_read = open(pipe_location, O_RDONLY | O_NONBLOCK);
 
@@ -48,11 +52,11 @@ int main() {
 
         if (FD_ISSET(pipe_read, &read_fds)) {
             int bytes = read(pipe_read, buff, sizeof(buff));
-            if (bytes > 1) {
-                buff[strlen(buff) - 1]=0;
-                buff = strsep(&buff, "\n");
-                printf("%s\n",buff);
-            }
+            // if (bytes > 1) {
+            //     buff[strlen(buff) - 1]=0;
+            //     buff = strsep(&buff, "\n");
+            //     printf("%s\n",buff);
+            // }
         }
 
 
