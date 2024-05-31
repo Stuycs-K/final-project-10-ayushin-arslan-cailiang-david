@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class encoder{
+public class decoder{
   public static void main(String[] args) {
     if (args.length != 4) {
       System.out.println("Enter 4 items.");
@@ -31,17 +31,6 @@ public class encoder{
       System.exit(0);
     }
     int[] SESSION_KEY = generateHex(args[0],8);
-    ////
-    //Print Key
-    System.out.println("KEY = ");
-    for (int i = 0; i < SESSION_KEY.length; i++) {
-      for (int b = 0; b < 8; b++) {
-        System.out.print(SESSION_KEY[i] >> b & 1);
-      }
-      System.out.print(" ");
-    }
-    System.out.println("\n");
-    ////
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
     try {
       ArrayList<Integer> plainText = new ArrayList<Integer> ();
@@ -74,7 +63,7 @@ public class encoder{
       for (int i = 0; i < keyStream.length; i+=228) {
         int[] temp2 = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR);
         HexStringer(temp2);
-        int newVector = ((INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]) + 1)   % 8388607;
+        int newVector = ((INITIALIZATION_VECTOR[0] << 16 | INITIALIZATION_VECTOR[1] << 8 | INITIALIZATION_VECTOR[2]) +1)   % 8388607;
         INITIALIZATION_VECTOR[0] = newVector >> 16 & 0xFF;
         INITIALIZATION_VECTOR[1] = newVector >> 8 & 0xFF;
         INITIALIZATION_VECTOR[2] = newVector & 0xFF;
@@ -85,17 +74,19 @@ public class encoder{
       }
     }
       try {
-        FileOutputStream myWriter = new FileOutputStream(output);
+        byte[] clear = new byte[plainText.size()];
         for (int i = 0; i < plainText.size(); i++) {
           int temp2 = (keyStream[8*i] << 7) | (keyStream[8*i+1] << 6) | (keyStream[8*i+2] << 5) | (keyStream[8*i+3] << 4) | (keyStream[8*i+4] << 3) | (keyStream[8*i+5] << 2) | (keyStream[8*i+6] << 1) | keyStream[8*i+7];
-          myWriter.write((byte) (plainText.get(i)^temp2));
+          clear[i] = (byte) (plainText.get(i) ^ temp2);
         }
-        ////
-        for (int i = plainText.size(); i < keyStream.length/8; i++) {
-          int temp2 = (keyStream[8*i] << 7) | (keyStream[8*i+1] << 6) | (keyStream[8*i+2] << 5) | (keyStream[8*i+3] << 4) | (keyStream[8*i+4] << 3) | (keyStream[8*i+5] << 2) | (keyStream[8*i+6] << 1) | keyStream[8*i+7];
-          myWriter.write((byte) temp2);
+        int end = clear.length-1;
+        while (clear[end] == 0) {
+          end--;
         }
-        ////
+        FileOutputStream myWriter = new FileOutputStream(output);
+        for (int i = 0; i < end; i++) {
+        myWriter.write(clear[i]);
+      }
         myWriter.close();
       }
       catch (IOException ex) {

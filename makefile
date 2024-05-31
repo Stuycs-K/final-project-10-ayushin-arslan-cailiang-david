@@ -4,8 +4,11 @@ encode: encoder.class
 encoder.class: encoder.java
 	@javac encoder.java
 
-decode: encoder.class
-	@java encoder $(ARGS)
+decode: decoder.class
+	@java decoder $(ARGS)
+
+decoder.class: decoder.java
+	@javac decoder.java
 
 clean:
 	@rm -f *.class
