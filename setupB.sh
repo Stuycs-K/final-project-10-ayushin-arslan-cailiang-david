@@ -16,5 +16,7 @@ fi
 
 gcc -o input_a input.c
 
-./input_a $AtoB | java test B encode > $BtoA
+# ./input_a $AtoB | java test B encode > $BtoA
+./input_a $BtoA > $AtoB
+# cat | java test B encode > $BtoA
 
