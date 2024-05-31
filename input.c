@@ -24,11 +24,7 @@ int main() {
 
     char const * pipe_location = "mario";
 
-    int pipe_read = open(pipe_location, O_RDONLY);
-
-    printf("%d\n", STDIN_FILENO);
-    printf("HEY\n");
-    fflush( stdout );
+    int pipe_read = open(pipe_location, O_RDONLY | O_NONBLOCK);
 
     while(1){
 

@@ -20,11 +20,13 @@ public class test {
             String line = "";
             while (line != null) {
                 line = stdin.readLine();
-                if (args.length == 1) {
-                    System.out.println(args[0] + " received " + line);
-                }
-                else {
-                    System.out.println("received " + line);
+                if (args.length == 2) {
+                    if (args[1].equals("encode")) {
+                        System.out.println(args[0] + " encoded" + line);
+                    }
+                    else {
+                        System.out.println(args[0] + " decoded" + line);
+                    }
                 }
             }
 

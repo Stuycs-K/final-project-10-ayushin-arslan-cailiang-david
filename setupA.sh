@@ -1,14 +1,14 @@
 javac test.java
 
-PIPE="mario"
+AtoB="mario"
 
-if !([ -p $PIPE ]); then
+if !([ -p $AtoB ]); then
     echo "Creating pipe";
-    mkfifo $PIPE;
+    mkfifo $AtoB;
 fi
 
 
 gcc -o input_a input.c
 
-./input_a | java test > $PIPE
+./input_a | java test AtoB encode > $AtoB
 
