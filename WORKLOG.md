@@ -30,7 +30,7 @@ Continue Debugging algorithm (Had issues with little endian vs big endian)
 
 Got algorithm to work with reference algorithm.
 
-### 5/29/2024
+### 5/30/2024
 
 Did more research on GSM standard.
 
