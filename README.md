@@ -14,7 +14,7 @@ KEY_STRING is required to be 16 characters long.
 
 INITIALIZATION_VECTOR is required to 6 characters long and represent a value that can fit inside 22 bits.
 
-INITIALIZATION_VECTOR must start in: 0,4,8,c,C
+INITIALIZATION_VECTOR must start in: 0,1,2, or 3.
 
 The 2 largest bits are discarded automatically.
 

@@ -1,14 +1,14 @@
-encode: encoder.class
-	@java encoder $(ARGS)
+encode: encoder3.class
+	@java encoder3 $(ARGS)
 
-encoder.class: encoder.java
-	@javac encoder.java
+encoder3.class: encoder3.java
+	@javac encoder3.java
 
-decode: decoder.class
-	@java decoder $(ARGS)
+decode: decoder3.class
+	@java decoder3 $(ARGS)
 
-decoder.class: decoder.java
-	@javac decoder.java
+decoder3.class: decoder3.java
+	@javac decoder3.java
 
 clean:
 	@rm -f *.class
