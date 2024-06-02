@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
 
                 char *str = malloc(BUFFER_SIZE);
                 sprintf(str, "%s read pipe: %s -- %ld strlen\n", message_from, buff, strlen(buff));
-                write(testout, str, BUFFER_SIZE);
+                // write(testout, str, BUFFER_SIZE);
 
                 pid_t p;
                 p = fork();

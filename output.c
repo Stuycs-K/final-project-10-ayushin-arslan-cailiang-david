@@ -47,8 +47,8 @@ int main(int argc, char* argv[]) {
             fgets(buff, BUFFER_SIZE, stdin);
             buff[strlen(buff)]=0;
             buff = strsep(&buff, "\n");
-            printf("Read %s (strlen %ld)\n", buff, strlen(buff));
-            printf("%s\n", pipe_location);
+            printf("Writing to pipe %s (strlen %ld)\n", buff, strlen(buff));
+            // printf("%s\n", pipe_location);
             write(pipe_write, buff, BUFFER_SIZE);
             // else {
             //     exit(0);
