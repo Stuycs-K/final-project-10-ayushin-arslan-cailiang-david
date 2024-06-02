@@ -1,4 +1,4 @@
 javac test.java
 
-echo "$1" | java test decode
+echo "$1" | java test decode > /dev/tty
 

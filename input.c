@@ -29,13 +29,12 @@ int main(int argc, char* argv[]) {
     char * pipe_location = argv[1];
     char * message_from = argv[2];
 
-    int pipe_read = open(pipe_location, O_RDONLY);
-    printf("Opened pipe\n");
+    int testout = open("testout.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
 
-    FILE *pipestream = fopen(pipe_location, "r");
-    if (pipestream == NULL) {
-        err(-1, "fopen fail");
-    }
+    int pipe_read = open(pipe_location, O_RDONLY);
+    char *testprint = malloc(BUFFER_SIZE);
+    sprintf(testprint, "Opened pipe (input)\n");
+    write(testout, testprint, BUFFER_SIZE);
 
     while(1){
 
@@ -51,7 +50,7 @@ int main(int argc, char* argv[]) {
 
         //if standard in, use fgets
         if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-            char *read = fgets(buff, sizeof(buff), stdin);
+            char *read = fgets(buff, BUFFER_SIZE, stdin);
             if (read) {
                 buff[strlen(buff)]=0;
                 buff = strsep(&buff, "\n");
@@ -65,23 +64,30 @@ int main(int argc, char* argv[]) {
         }
 
         if (FD_ISSET(pipe_read, &read_fds)) {
-            // int bytes = read(pipe_read, buff, sizeof(buff));
-            char *read = fgets(buff, BUFFER_SIZE, pipestream);
+            int bytes = read(pipe_read, buff, BUFFER_SIZE);
 
-            if (read) {
+            if (bytes) {
                 // printf("%s read pipe %d bytes %ld strlen\n", message_from, bytes, strlen(buff));
-                printf("%s read pipe %ld strlen\n", message_from, strlen(buff));
-                printf("%s\n", buff);
-                // pid_t p;
-                // p = fork();
+               
+                // printf("%s read pipe %ld strlen\n", message_from, strlen(buff));
+                // printf("%s\n", buff);
+
+                char *str = malloc(BUFFER_SIZE);
+                sprintf(str, "%s read pipe: %s -- %ld strlen\n", message_from, buff, strlen(buff));
+                write(testout, str, BUFFER_SIZE);
+
+                pid_t p;
+                p = fork();
                 // printf("Forked! %s %d %d\n", buff, bytes, getpid());
                 // err(p, "fork fail");
-                // if (p == 0) {
-                //     printf("%s\n", buff);
-                //     // int execerr = execlp("bash", "bash", "print.sh", buff, NULL);
-                //     // err(execerr, "execlp error");
-                //     exit(0);
-                // }
+                if (p == 0) {
+                    char *printmsg = malloc(BUFFER_SIZE);
+                    sprintf(printmsg, "%s\n", buff);
+                    write(testout, printmsg, BUFFER_SIZE);
+                    int execerr = execlp("bash", "bash", "print.sh", buff, NULL);
+                    err(execerr, "execlp error");
+                    exit(0);
+                }
             }
             // if (bytes > 1) {
             //     buff[strlen(buff) - 1]=0;
