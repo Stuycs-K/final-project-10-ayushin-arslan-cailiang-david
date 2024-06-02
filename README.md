@@ -48,6 +48,8 @@ Sample: make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"
 
 3) Read PRESENTATION.md for History on GSM and A5/1
 
+
+
 Testing:
 
 make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"; make decode ARGS="1223456789ABCDEF 000133 output.dat decrypt.dat"; diff input.dat decrypt.dat
