@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 public class encoder5{
   public static void main(String[] args) {
+    checkInput(args);
     boolean atob = args.length == 4 || args[4].toLowerCase().equals("atob");
+    boolean noDump = args.length == 6 && (args[5].toLowerCase().equals("hexdump") | args[5].toLowerCase().equals("true"));
     int[] SESSION_KEY = generateHex(args[0],8);
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
     printKey(SESSION_KEY);
@@ -37,16 +39,16 @@ public class encoder5{
       try {
         FileOutputStream myWriter = new FileOutputStream(output);
         for (int k = 0; k < ((plainText.size()*8)/114)*114+114; k+=114) {
-        int[] keyStream = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR,atob);
-        HexStringer(keyStream);
+        int[] KeyBits = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR,atob);
+        HexDump(KeyBits);
         updateVector(INITIALIZATION_VECTOR);
         for (int i = 0; i < 114; i++) {
           if ((k+i)/8 < plainText.size()) {
-            keyStream[i] ^= ((plainText.get((k+i)/8) >> (7-(k+i)%8)) & 1);
+            KeyBits[i] ^= ((plainText.get((k+i)/8) >> (7-(k+i)%8)) & 1);
           }
         }
         for (int i = 0; i < 120; i+=8) {
-          myWriter.write(keyStream[i] << 7 | keyStream[i+1] << 6 | keyStream[i+2] << 5 | keyStream[i+3] << 4 | keyStream[i+4] << 3 | keyStream[i+5] << 2 | keyStream[i+6] << 1 | keyStream[i+7]);
+          myWriter.write(KeyBits[i] << 7 | KeyBits[i+1] << 6 | KeyBits[i+2] << 5 | KeyBits[i+3] << 4 | KeyBits[i+4] << 3 | KeyBits[i+5] << 2 | KeyBits[i+6] << 1 | KeyBits[i+7]);
         }
     }
       }
@@ -99,7 +101,7 @@ public class encoder5{
     }
     int[] output = new int[120];
     for (int i = 0; i < 328; i++) {
-      int maj_bit = ((reg1>>8&1)+(reg2>>10&1)+(reg3>>10&1))/2;
+      int maj_bit = ((reg1>>8&1) & (reg2>>10&1)) | ((reg1>>8&1) & (reg3>>10&1)) | ((reg2>>10&1) & (reg3>>10&1));
       if ((reg1>>8&1) == maj_bit) {
         reg1 = ((reg1 & 0x3FFFF) << 1) | ((reg1 >> 13 & 1) ^ (reg1 >> 16 & 1) ^ (reg1 >> 17 & 1) ^ (reg1 >> 18 & 1));
       }
@@ -141,7 +143,7 @@ public class encoder5{
     return SESSION_KEY;
   }
 
-  public static void HexStringer(int[] data) {
+  public static void HexDump(int[] data) {
     int[] outNum = new int[29];
     for (int i = 0; i < 114; i++) {
       outNum[i/4] = outNum[i/4] << 1 | data[i];
@@ -170,5 +172,52 @@ public class encoder5{
     INITIALIZATION_VECTOR[0] = newVector >> 16 & 0xFF;
     INITIALIZATION_VECTOR[1] = newVector >> 8 & 0xFF;
     INITIALIZATION_VECTOR[2] = newVector & 0xFF;
+  }
+
+  public static void checkInput(String[] args) {
+    if (3 > args.length || args.length > 6) {
+      System.out.println("Enter 4-6 Parameters");
+      System.out.println("KEY INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE [AtoB?] [HexDump?]");
+      System.out.println("Items in brackets are optional.");
+      System.exit(0);
+    }
+    if (args[0].length() != 16) {
+      System.out.println("Wrong sized key entered.");
+      System.out.println("Keys are 16 character long hex strings.");
+      System.exit(0);
+    }
+    if (!args[0].matches("[0-9a-fA-F]{16}")) {
+      System.out.println("Key is a hex value.");
+      System.exit(0);
+    }
+    if (args[1].length() != 6) {
+      System.out.println("Wrong sized initialization vector entered.");
+      System.out.println("Keys are 6 character long hex strings.");
+      System.exit(0);
+    }
+    if (!args[1].matches("[0-9a-fA-F]{6}")) {
+      System.out.println("Initialization vector is a hex value.");
+      System.exit(0);
+    }
+    if (48 > args[1].charAt(0) || args[1].charAt(0) > 51)  {
+      System.out.println("Invalid initial character for initialization vector.");
+      System.out.println("Must start with: 0,1,2,3");
+      System.out.println("Problem Character: "+args[1].charAt(0));
+      System.exit(0);
+    }
+    if (args.length == 5) {
+      if (!args[4].toLowerCase().equals("atob") && !args[4].toLowerCase().equals("btoa")) {
+        System.out.println("Enter \'atob\' or \'btoa\' as [AtoB?]");
+        System.out.println("This parameter is required for hexdump choice!");
+        System.exit(0);
+      }
+    }
+    if (args.length == 6) {
+      if (!args[4].toLowerCase().equals("hexdump") && !args[4].toLowerCase().equals("true")) {
+        System.out.println("Enter \'hexdump\' or \'true\' as [HexDump?]");
+        System.out.println("If you don't want hexdump, do NOT enter anything in this parameter.");
+        System.exit(0);
+      }
+    }
   }
 }

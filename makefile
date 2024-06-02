@@ -1,8 +1,8 @@
-encode: encoder4.class
-	@java encoder4 $(ARGS)
+encode: encoder5.class
+	@java encoder5 $(ARGS)
 
-encoder4.class: encoder4.java
-	@javac encoder4.java
+encoder5.class: encoder5.java
+	@javac encoder5.java
 
 decode: decoder4.class
 	@java decoder4 $(ARGS)

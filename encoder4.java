@@ -260,7 +260,6 @@ public class encoder4{
     return SESSION_KEY;
   }
 
-
   public static void HexStringer(int[] data) {
     int[] outNum = new int[29];
     for (int i = 0; i < 114; i++) {
