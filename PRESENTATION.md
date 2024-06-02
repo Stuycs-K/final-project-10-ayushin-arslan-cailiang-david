@@ -1,19 +1,19 @@
 # History of GSM
 
-*GSM stands for Global System for Mobile Communications.* It is a standard for digital cellular communications.
-It was first implemented by European Telecommunications Standards Institute, in *1991*. The trademark is currently held by Global System
+**GSM stands for Global System for Mobile Communications.** It is a standard for digital cellular communications.
+It was first implemented by European Telecommunications Standards Institute, in **1991**. The trademark is currently held by Global System
 for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)
-and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than *digital* systems,
+and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than **digital** systems,
 making them significantly more costly to operate compared to GSM and other more modern communications standards.
 
-An important part of GSM is narrowband *time division multiple accession* (TDMA), which allows multiple people to use the
+An important part of GSM is narrowband **time division multiple accession** (TDMA), which allows multiple people to use the
 same band of radio frequencies simultaneous, by switching between connections rapidly. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.
 
-In addition, GSM was *fully duplex* meaning uplink and downlink frequencies were different allowing you to simultaneously receive
+In addition, GSM was **fully duplex** meaning uplink and downlink frequencies were different allowing you to simultaneously receive
 and transmit, which allows a lot more data to be sent. This need for additional frequencies was compensated for by the use of TDMA,
-which makes each channel much more data dense. This allowed for *higher speed non-voice cellular data*.
+which makes each channel much more data dense. This allowed for **higher speed non-voice cellular data**.
 
-GSM was also one of the first protocols to *encrypt* its communications streams.
+GSM was also one of the first protocols to **encrypt** its communications streams.
 
 Improvement on GSM:
 
