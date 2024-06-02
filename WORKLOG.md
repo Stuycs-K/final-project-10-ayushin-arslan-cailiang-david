@@ -38,3 +38,13 @@ info
 - fixed last byte of key stream by padding with 0s (114 bits not divisible by 8)
 - our encoder step 5 generates correct key stream
 - small fix to print format
+
+### 5/30/24
+
+- started experimenting with piping into java encoder (want to make very rough simulation of the A->B and B->A communication)
+- added c program that gets stdin and write to pipe
+
+### 5/31/24
+
+- added and fixed bugs in pipe stuff, still not working
+
