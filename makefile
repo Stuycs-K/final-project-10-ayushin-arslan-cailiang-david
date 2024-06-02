@@ -4,11 +4,11 @@ encode: encoder5.class
 encoder5.class: encoder5.java
 	@javac encoder5.java
 
-decode: decoder4.class
-	@java decoder4 $(ARGS)
+decode: decoder5.class
+	@java decoder5 $(ARGS)
 
-decoder4.class: decoder4.java
-	@javac decoder4.java
+decoder5.class: decoder5.java
+	@javac decoder5.java
 
 clean:
 	@rm -f *.class

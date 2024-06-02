@@ -4,7 +4,7 @@ public class encoder5{
   public static void main(String[] args) {
     checkInput(args);
     boolean atob = args.length == 4 || args[4].toLowerCase().equals("atob");
-    boolean noDump = args.length == 6 && (args[5].toLowerCase().equals("hexdump") | args[5].toLowerCase().equals("true"));
+    boolean dump = args.length == 6 && (args[5].toLowerCase().equals("dump") | args[5].toLowerCase().equals("true"));
     int[] SESSION_KEY = generateHex(args[0],8);
     int[] INITIALIZATION_VECTOR = generateHex(args[1],3);
     printKey(SESSION_KEY);
@@ -40,7 +40,7 @@ public class encoder5{
         FileOutputStream myWriter = new FileOutputStream(output);
         for (int k = 0; k < ((plainText.size()*8)/114)*114+114; k+=114) {
         int[] KeyBits = byteStreamer(SESSION_KEY,INITIALIZATION_VECTOR,atob);
-        HexDump(KeyBits);
+        if (dump) HexDump(KeyBits);
         updateVector(INITIALIZATION_VECTOR);
         for (int i = 0; i < 114; i++) {
           if ((k+i)/8 < plainText.size()) {
@@ -213,8 +213,8 @@ public class encoder5{
       }
     }
     if (args.length == 6) {
-      if (!args[4].toLowerCase().equals("hexdump") && !args[4].toLowerCase().equals("true")) {
-        System.out.println("Enter \'hexdump\' or \'true\' as [HexDump?]");
+      if (!args[5].toLowerCase().equals("dump") && !args[5].toLowerCase().equals("true")) {
+        System.out.println("Enter \'dump\' or \'true\' as [HexDump?]");
         System.out.println("If you don't want hexdump, do NOT enter anything in this parameter.");
         System.exit(0);
       }

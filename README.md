@@ -24,7 +24,7 @@ INITIALIZATION_VECTOR must start in: 0, 1, 2, or 3.
 
 \[AtoB?\] parameter must be provided for the \[HexDump?\] parameter to be accessible.
 
-\[HexDump?\] parameter only accepts the two following responses: \'hexdump\' or \'true\'
+\[HexDump?\] parameter only accepts the two following responses: \'dump\' or \'true\'
 
 \[HexDump?\] parameter doesn't care about capitalization.
 
@@ -33,13 +33,18 @@ INITIALIZATION_VECTOR must start in: 0, 1, 2, or 3.
 1) make encode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE \[AtoB?\] \[HexDump?\]
 
 Sample: make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"
-Sample: make encode ARGS="4E2F4D7C1EB88B3A 000134 input.dat output.dat btoa"
-Sample: make encode ARGS="72F4B23E781DD15C 0CF1D4 input.dat output.dat atob hexdump"
+Sample: make encode ARGS="4E2F4D7C1EB88B3A 000134 input1 output.dat btoa"
+Sample: make encode ARGS="72F4B23E781DD15C 0CF1D4 makefile output.dat atob dump"
 
-2) make decode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE \[AtoB?\] \[HexDump?\]
+2) make decode KEY_STRING INITIALIZATION_VECTOR INPUT_FILE OUTPUT_FILE \[AtoB?\]
 
 Sample: make decode ARGS="1223456789ABCDEF 000133 output.dat decrypt.dat"
-Sample: make encode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"
-Sample: make encode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob hexdump"
+Sample: make decode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"
+Sample: make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"
 
 3) Read PRESENTATION.md for History on GSM and A5/1
+
+Testing:
+make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"; make decode ARGS="1223456789ABCDEF 000133 output.dat decrypt.dat"; diff input.dat decrypt.dat
+make encode ARGS="4E2F4D7C1EB88B3A 000134 input1 output.dat btoa"; make decode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"; diff input1 decrypt.dat
+make encode ARGS="72F4B23E781DD15C 0CF1D4 makefile output.dat atob dump"; make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"; diff makefile decrypt.dat
