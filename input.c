@@ -22,13 +22,20 @@ int main(int argc, char* argv[]) {
 
     fd_set read_fds;
 
-    if (argc != 2) {
+    if (argc < 3) {
         printf("args\n");
         exit(1);
     }
     char * pipe_location = argv[1];
+    char * message_from = argv[2];
 
-    int pipe_read = open(pipe_location, O_RDONLY | O_NONBLOCK);
+    int pipe_read = open(pipe_location, O_RDONLY);
+    printf("Opened pipe\n");
+
+    FILE *pipestream = fopen(pipe_location, "r");
+    if (pipestream == NULL) {
+        err(-1, "fopen fail");
+    }
 
     while(1){
 
@@ -44,14 +51,38 @@ int main(int argc, char* argv[]) {
 
         //if standard in, use fgets
         if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-            fgets(buff, sizeof(buff), stdin);
-            buff[strlen(buff)]=0;
-            buff = strsep(&buff, "\n");
-            printf("Recieved from terminal: '%s'\n",buff);
+            char *read = fgets(buff, sizeof(buff), stdin);
+            if (read) {
+                buff[strlen(buff)]=0;
+                buff = strsep(&buff, "\n");
+                char *str = malloc(BUFFER_SIZE);
+                sprintf(str, "%s: '%s'\n", message_from, buff);
+                write(STDOUT_FILENO, str, BUFFER_SIZE);
+            }
+            // else {
+            //     exit(0);
+            // }
         }
 
         if (FD_ISSET(pipe_read, &read_fds)) {
-            int bytes = read(pipe_read, buff, sizeof(buff));
+            // int bytes = read(pipe_read, buff, sizeof(buff));
+            char *read = fgets(buff, BUFFER_SIZE, pipestream);
+
+            if (read) {
+                // printf("%s read pipe %d bytes %ld strlen\n", message_from, bytes, strlen(buff));
+                printf("%s read pipe %ld strlen\n", message_from, strlen(buff));
+                printf("%s\n", buff);
+                // pid_t p;
+                // p = fork();
+                // printf("Forked! %s %d %d\n", buff, bytes, getpid());
+                // err(p, "fork fail");
+                // if (p == 0) {
+                //     printf("%s\n", buff);
+                //     // int execerr = execlp("bash", "bash", "print.sh", buff, NULL);
+                //     // err(execerr, "execlp error");
+                //     exit(0);
+                // }
+            }
             // if (bytes > 1) {
             //     buff[strlen(buff) - 1]=0;
             //     buff = strsep(&buff, "\n");

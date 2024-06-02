@@ -18,16 +18,17 @@ public class test {
 
 
             String line = "";
+            line = stdin.readLine();
             while (line != null) {
-                line = stdin.readLine();
-                if (args.length == 2) {
-                    if (args[1].equals("encode")) {
-                        System.out.println(args[0] + " encoded " + line);
+                if (args.length == 1) {
+                    if (args[0].equals("encode")) {
+                        System.out.println("(encoded) " + line);
                     }
                     else {
-                        System.out.println(args[0] + " decoded " + line);
+                        System.out.println("(decoded) " + line);
                     }
                 }
+                line = stdin.readLine();
             }
 
         }
