@@ -229,3 +229,7 @@ https://en.wikipedia.org/wiki/SIM_card <= Wikipedia SIM cards
 https://en.wikipedia.org/wiki/COMP128 <= Wikipedia COMP128
 
 https://medium.com/@shubhamkatheria11/a5-2-ciphering-algorithm-implementation-d594abd06ab8 <= A5/2 implementation
+
+https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DYWVSsF7U5Ok&ved=2ahUKEwiiqO2qlsCGAxXmkokEHXddDcUQtwJ6BAgIEAI&usg=AOvVaw0FU65lvIDdHNAEQN5k5Skw <= video explaining a5/1 standard
+
+https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3Dts-yZ19vOL0&ved=2ahUKEwiiqO2qlsCGAxXmkokEHXddDcUQtwJ6BAgNEAI&usg=AOvVaw0eCosWfWQOENGeYDbAKrf2
