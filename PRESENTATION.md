@@ -4,7 +4,7 @@
 It was first implemented by European Telecommunications Standards Institute, in *1991*. The trademark is currently held by Global System
 for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)[^11]
 and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than *digital* systems,
-making them significantly more costly to operate compared to GSM and other more modern communications standards.[^7]
+making them significantly more costly to operate compared to GSM and other more modern communications standards.[^7][^3]
 
 An important part of GSM is narrowband *time division multiple accession* (TDMA), which allows multiple people to use the
 same band of radio frequencies simultaneous, by switching between connections rapidly. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.[^7]
@@ -15,8 +15,7 @@ which makes each channel much more data dense. This allowed for *higher speed no
 
 GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
 
-One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE,
-which is the current standard.[^26][^27]
+One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard.[^26][^27]
 
 Improvement on GSM:[^8][^9]
 
@@ -38,7 +37,7 @@ A3		authentication algorithm (based on COMP128 - Developed Before 1998)[^18]
 
 A5/1	"strong" over-the-air voice-privacy algorithm (Developed in 1987)[^4]
 
-A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)[^5]
+A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)[^5][^19]
 
 A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)[^18]
 
@@ -219,34 +218,30 @@ of two or more registers.
 
 [^11]: https://en.wikipedia.org/wiki/Digital_AMPS <= Pre-GSM standard
 
-[^12]: https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
+[^12]: https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
 
-[^13]: https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
+[^13]: https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= (IMSI)
 
-[^14]: https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= (IMSI)
+[^14]: https://en.wikipedia.org/wiki/DVB-T
 
-[^15]: https://en.wikipedia.org/wiki/DVB-T
+[^15]: https://en.wikipedia.org/wiki/GSM_frequency_bands
 
-[^16]: https://en.wikipedia.org/wiki/GSM_frequency_bands
+[^16]: https://en.wikipedia.org/wiki/SIM_card
 
-[^17]: https://en.wikipedia.org/wiki/SIM_card
+[^17]: https://en.wikipedia.org/wiki/COMP128
 
-[^18]: https://en.wikipedia.org/wiki/COMP128
+[^18]: https://medium.com/@shubhamkatheria11/a5-2-ciphering-algorithm-implementation-d594abd06ab8
 
-[^19]: https://medium.com/@shubhamkatheria11/a5-2-ciphering-algorithm-implementation-d594abd06ab8
+[^19]: https://www.youtube.com/watch?v=ts-yZ19vOL0 <= video explaining a5/1 standard
 
-[^20]: https://www.youtube.com/watch?v=ts-yZ19vOL0 <= video explaining a5/1 standard
+[^20]: https://en.wikipedia.org/wiki/IMSI-catcher
 
-[^21]: https://en.wikipedia.org/wiki/IMSI-catcher
+[^21]: https://asecuritysite.com/symmetric/a5 <= Simulation of a5/1
 
-[^22]: https://asecuritysite.com/symmetric/a5 <= Simulation of a5/1
+[^22]: https://www.youtube.com/watch?v=8rPip6x0pUQ <= GSM unlock
 
-[^23]: https://733amir.github.io/a51-cipher-simulator/ <= partial simulation of a5/1
+[^23]: https://en.wikipedia.org/wiki/CdmaOne
 
-[^24]: https://www.youtube.com/watch?v=8rPip6x0pUQ <= GSM unlock
+[^24]: https://en.wikipedia.org/wiki/Verizon_(mobile_network)
 
-[^25]: https://en.wikipedia.org/wiki/CdmaOne
-
-[^26]: https://en.wikipedia.org/wiki/Verizon_(mobile_network)
-
-[^27]: https://www.pcmag.com/news/cdma-vs-gsm-whats-the-difference
+[^25]: https://www.pcmag.com/news/cdma-vs-gsm-whats-the-difference
