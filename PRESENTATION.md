@@ -4,66 +4,66 @@
 It was first implemented by European Telecommunications Standards Institute, in *1991*. The trademark is currently held by Global System
 for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)
 and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than *digital* systems,
-making them significantly more costly to operate compared to GSM and other more modern communications standards.
+making them significantly more costly to operate compared to GSM and other more modern communications standards.[^7]
 
 An important part of GSM is narrowband *time division multiple accession* (TDMA), which allows multiple people to use the
-same band of radio frequencies simultaneous, by switching between connections rapidly. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.
+same band of radio frequencies simultaneous, by switching between connections rapidly. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.[^7]
 
 In addition, GSM was *fully duplex* meaning uplink and downlink frequencies were different allowing you to simultaneously receive
 and transmit, which allows a lot more data to be sent. This need for additional frequencies was compensated for by the use of TDMA,
-which makes each channel much more data dense. This allowed for *higher speed non-voice cellular data*.
+which makes each channel much more data dense. This allowed for *higher speed non-voice cellular data*.[^7]
 
-GSM was also one of the first protocols to *encrypt* its communications streams.
+GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
 
-Improvement on GSM:
+Improvement on GSM:[^8][^9]
 
-Enhanced Data rates for GSM Evolution (EDGE)
+1. Enhanced Data rates for GSM Evolution (EDGE)
 
-Evolved EDGE
+2. Evolved EDGE
 
-3G (Switch to A5/3 aka KASUMI)
+3. 3G (Switch to A5/3 "KASUMI" Encryption)
 
-4G (AES-Based Encryption Only)
+4. 4G (AES-Based Encryption Only)
 
-5G
+5. 5G
 
 # Security of GSM
 
-The four core GSM algorithms are:
+The four core GSM algorithms are:[^2][^22]
 
 A3		authentication algorithm (based on COMP128 - Developed Before 1998)
 
 A5/1	"strong" over-the-air voice-privacy algorithm (Developed in 1987)
 
-A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1989)
+A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)
 
 A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)
 
 # Vulnerabilities in GSM
 
 In 1999, Ian Goldberg and David A. Wagner developed a method to crack A5/2 just one month after it was reverse engineered.
-The algorithm turned out to be so weak that it was possible to crack it in real time in 1999.
+The algorithm turned out to be so weak that it was possible to crack it in real time in 1999.[^7]
 
 In 2003, Elad Barkan, Eli Biham and Nathan Keller found a vulnerability in error correction code that allowed a ciphertext-only
 attack. A ciphertext-only attack would allow someone who only has access to a bunch ciphertext to crack the cipher. They also
-found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.
+found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.[^7]
 
 In 2006, A5/2 was banned from implementation in new devices. All existing devices capable of using A5/1 were forced to use A5/1
 from this point forward. All devices only capable of using A5/2 were forced to use a unencrypted connection, which isn't ideal.
-But this does give an idea as to how weak A5/2 is.
+But this does give an idea as to how weak A5/2 is.[^7]
 
-That being said, A5/1 is also pretty weak. It just wasn't completely neutered by sanctions and export restrictions.
+That being said, A5/1 is also pretty weak. It just wasn't completely neutered by sanctions and export restrictions.[^7]
 
 In 2000, Alex Biryukov, Adi Shamir and David Wagner figured out that you cryptanalyze A5/1 in real time using a time-memory tradeoff
 attack. One tradeoff allows an attacker to reconstruct the key in one second from two minutes of known plaintext or in several minutes
 from two seconds of known plain text, but he must first complete an expensive preprocessing stage which requires 248 steps to compute
-around 300 GB of data.
+around 300 GB of data.[^7][^5]
 
 This attack was then further optimized by Ekdahl and Johansson, Maximov et al., and Elad Barkan and Eli Biham so that the attack requires
-less than one minute of computations, and a few seconds of known conversation".
+less than one minute of computations, and a few seconds of known conversation".[^7]
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
-tables and were 1.7TB in size.
+tables and were 1.7TB in size.[^7]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
@@ -74,19 +74,22 @@ The COMP128 algorithm's main problem is the small output and weak diffusion.
 
 # Confidentiality in GSM and GSM-derived protocols (aka most modern protocols EDGE, 3G, and 4G)
 
-Note: 5G uses more complex methods to maintain confidentiality.
+Note: 5G uses more complex methods to maintain confidentiality.[]
 
-GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
+GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit
+ country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
 International Mobile Equipment Identity (IMEI) number which identifies a phone or a Integrated Circuit Card Identifier (ICCID) number
  which identifies a SIM card. A Mobile Station International Subscriber Directory (MSSIDN) number is simply your whole phone number.
- IMEI is generated using a Type Allocation Code (TAC), which is managed by the GMS Association.
+ IMEI is generated using a Type Allocation Code (TAC), which is managed by the GMS Association.[^13]
 
-Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI) is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related information like challenge codes. It also has to be sent when a device is first connect to a
-network and needs to receive up to date security information from the nearest cell tower.
+Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI)
+ is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related
+ information like challenge codes. It also has to be sent when a device is first connect to a network and needs to receive up to date security
+ information from the nearest cell tower.[^14]
 
 # SIM Cards
 
-A Subscriber Identity Module (SIM) contains the following:
+A Subscriber Identity Module (SIM) contains the following:[^17]
 
 1) security authentication and cipher information. (eg: 128-bit authentication key)
 
@@ -105,22 +108,22 @@ A SIM card often also contains additional user authentication information and a 
 A IMSI-Catcher is a eavesdropping device used to intercept network traffic and get location information of subscribers by being a fake
 cell tower. 3G and beyond has protection against this through the use of mutual authentication. But GSM doesn't have this protection.
 Meaning that if you are able to degrade LTE and 3G communications enough, you may be able to force a device to use GSM, which is more
-venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.
+venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.[^21]
 
 The units that are capable of doing this are exclusively active units, which act as fully functionally cell towers. Passive units, on the
  other hand, act a lot more like pure listening devices, even though some passive units are capable of sending out limited commands to
- mobile devices.
+ mobile devices.[^21]
 
 # DVB-T
 
 DVB-T is a satellite communications protocol meant for TV. The receivers for this standard is extremely common and many of them are able
 to operate on frequencies not used by satellite TV. Many of them also tend to be software-defined meaning they don't decode in hardware
 but rather than software, allowing them to work with many communications protocols such as GSM. These devices allow for the assembly of
-a purely passive IMSI-catcher for less than $50.
+a purely passive IMSI-catcher for less than $50.[^15]
 
 # Additional Technical Specifications of GSM
 
-The two GSM radio channels commonly used in the US:
+The two GSM radio channels commonly used in the US:[^16]
 
 GSM Band    Uplink (MHz)       Downlink (MHz)
 
@@ -190,46 +193,54 @@ of two or more registers.
 11) Randomly generate a new Initialization Vector. We used java random with the first Initialization Vector acting as a seed.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
 
+# Notes / Interesting Information That Doesn't Fit Elsewhere
+
+1) A5/3 supports 384-bit frames when operating in GPRS/EDGE modes.[^20]
+
 # Resources
 
-http://koclab.cs.ucsb.edu/teaching/cren/project/2017/jensen+andersen.pdf <= Documentation On A5/1
+[^1]: http://koclab.cs.ucsb.edu/teaching/cren/project/2017/jensen+andersen.pdf <= Documentation On A5/1
 
-https://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001487/M017205/ET/147022641604ET.pdf <= GSM Security Documentation
+[^2]:https://epgp.inflibnet.ac.in/epgpdata/uploads/epgp_content/S000305IT/P001487/M017205/ET/147022641604ET.pdf <= GSM Security Documentation
 
-https://www.uky.edu/~jclark/mas355/GSM.PDF <= General Information On GSM
+[^3]: https://www.uky.edu/~jclark/mas355/GSM.PDF <= General Information On GSM
 
-https://en.wikipedia.org/wiki/A5/1 <= Wikipedia A5/1
+[^4]: https://en.wikipedia.org/wiki/A5/1
 
-https://en.wikipedia.org/wiki/A5/2 <= Wikipedia A5/2
+[^5]: https://en.wikipedia.org/wiki/A5/2
 
-https://en.wikipedia.org/wiki/KASUMI <= Wikipedia A5/3
+[^6]: https://en.wikipedia.org/wiki/KASUMI <= A5/3
 
-https://en.wikipedia.org/wiki/GSM <= Wikipedia GSM
+[^7]: https://en.wikipedia.org/wiki/GSM
 
-https://en.wikipedia.org/wiki/Enhanced_Data_rates_for_GSM_Evolution <= Wikipedia EDGE
+[^8]: https://en.wikipedia.org/wiki/Enhanced_Data_rates_for_GSM_Evolution <= EDGE
 
-https://en.wikipedia.org/wiki/3G <= Wikipedia 3G
+[^9]: https://en.wikipedia.org/wiki/3G
 
-https://link.springer.com/chapter/10.1007/978-3-540-45146-4_35 <= A5/2 Force Vulnerability
+[^10]: https://link.springer.com/chapter/10.1007/978-3-540-45146-4_35 <= A5/2 Downgrade Vulnerability
 
-https://en.wikipedia.org/wiki/Digital_AMPS <= Digital AMPS (Competing Standard with GSM)
+[^11]: https://en.wikipedia.org/wiki/Digital_AMPS <= Competing Standard with GSM
 
-https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
+[^12]: https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
 
-https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
+[^13]: https://www.efani.com/blog/difference-between-imei-imsi-iccid-and-msisdn-numbers <= Confidentiality Related Information
 
-https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= Wikipedia IMSI
+[^14]: https://en.wikipedia.org/wiki/International_mobile_subscriber_identity <= (IMSI)
 
-https://en.wikipedia.org/wiki/DVB-T <= Wikipedia DVB-T
+[^15]: https://en.wikipedia.org/wiki/DVB-T
 
-https://en.wikipedia.org/wiki/GSM_frequency_bands <= Wikipedia GSM Frequency Bands
+[^16]: https://en.wikipedia.org/wiki/GSM_frequency_bands
 
-https://en.wikipedia.org/wiki/SIM_card <= Wikipedia SIM cards
+[^17]: https://en.wikipedia.org/wiki/SIM_card
 
-https://en.wikipedia.org/wiki/COMP128 <= Wikipedia COMP128
+[^18]: https://en.wikipedia.org/wiki/COMP128
 
-https://medium.com/@shubhamkatheria11/a5-2-ciphering-algorithm-implementation-d594abd06ab8 <= A5/2 implementation
+[^19]: https://medium.com/@shubhamkatheria11/a5-2-ciphering-algorithm-implementation-d594abd06ab8
 
-https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DYWVSsF7U5Ok&ved=2ahUKEwiiqO2qlsCGAxXmkokEHXddDcUQtwJ6BAgIEAI&usg=AOvVaw0FU65lvIDdHNAEQN5k5Skw <= video explaining a5/1 standard
+[^20]: https://www.youtube.com/watch?v=ts-yZ19vOL0 <= video explaining a5/1 standard
 
-https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3Dts-yZ19vOL0&ved=2ahUKEwiiqO2qlsCGAxXmkokEHXddDcUQtwJ6BAgNEAI&usg=AOvVaw0eCosWfWQOENGeYDbAKrf2
+[^21]: https://en.wikipedia.org/wiki/IMSI-catcher
+
+[^22]: https://asecuritysite.com/symmetric/a5 <= Simulation of a5/1
+
+[^23]: https://733amir.github.io/a51-cipher-simulator/ <= partial simulation of a5/1
