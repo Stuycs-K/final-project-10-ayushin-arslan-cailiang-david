@@ -2,7 +2,7 @@
 
 *GSM stands for Global System for Mobile Communications.* It is a standard for digital cellular communications.
 It was first implemented by European Telecommunications Standards Institute, in *1991*. The trademark is currently held by Global System
-for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)
+for Mobile Communications (aka GSM Association). GSM was built upon earlier standards like American Mobile Phone System (AMPS)[^11]
 and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on analog systems rather than *digital* systems,
 making them significantly more costly to operate compared to GSM and other more modern communications standards.[^7]
 
@@ -14,6 +14,9 @@ and transmit, which allows a lot more data to be sent. This need for additional 
 which makes each channel much more data dense. This allowed for *higher speed non-voice cellular data*.[^7]
 
 GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
+
+One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE,
+which is the current standard.[^26][^27]
 
 Improvement on GSM:[^8][^9]
 
@@ -31,13 +34,13 @@ Improvement on GSM:[^8][^9]
 
 The four core GSM algorithms are:[^2][^22]
 
-A3		authentication algorithm (based on COMP128 - Developed Before 1998)
+A3		authentication algorithm (based on COMP128 - Developed Before 1998)[^18]
 
-A5/1	"strong" over-the-air voice-privacy algorithm (Developed in 1987)
+A5/1	"strong" over-the-air voice-privacy algorithm (Developed in 1987)[^4]
 
-A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)
+A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)[^5]
 
-A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)
+A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)[^18]
 
 # Vulnerabilities in GSM
 
@@ -46,7 +49,7 @@ The algorithm turned out to be so weak that it was possible to crack it in real 
 
 In 2003, Elad Barkan, Eli Biham and Nathan Keller found a vulnerability in error correction code that allowed a ciphertext-only
 attack. A ciphertext-only attack would allow someone who only has access to a bunch ciphertext to crack the cipher. They also
-found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.[^7]
+found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.[^7][^10]
 
 In 2006, A5/2 was banned from implementation in new devices. All existing devices capable of using A5/1 were forced to use A5/1
 from this point forward. All devices only capable of using A5/2 were forced to use a unencrypted connection, which isn't ideal.
@@ -55,7 +58,7 @@ But this does give an idea as to how weak A5/2 is.[^7]
 That being said, A5/1 is also pretty weak. It just wasn't completely neutered by sanctions and export restrictions.[^7]
 
 In 2000, Alex Biryukov, Adi Shamir and David Wagner figured out that you cryptanalyze A5/1 in real time using a time-memory tradeoff
-attack. One tradeoff allows an attacker to reconstruct the key in one second from two minutes of known plaintext or in several minutes
+attack. The setups allows an attacker to reconstruct the key in one second from two minutes of known plaintext or in several minutes
 from two seconds of known plain text, but he must first complete an expensive preprocessing stage which requires 248 steps to compute
 around 300 GB of data.[^7][^5]
 
@@ -63,14 +66,14 @@ This attack was then further optimized by Ekdahl and Johansson, Maximov et al., 
 less than one minute of computations, and a few seconds of known conversation".[^7]
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
-tables and were 1.7TB in size.[^7]
+tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^20]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
 output. COMP128 is considered a hashing algorithm as it is extremely difficult to go back unless you already know both parts: the key and
 the RAND. The RAND is a challenge code sent from the cell tower. There were 3 versions of the algorithm named -1, -2, and -3. -1 is
 considered extremely weak but -2 and -3 are considered weak. AES based algorithms have replaced the COMP128 algorithms almost completely.
-The COMP128 algorithm's main problem is the small output and weak diffusion.
+The COMP128 algorithm's main problem is the small output and weak diffusion.[^16]
 
 # Confidentiality in GSM and GSM-derived protocols (aka most modern protocols EDGE, 3G, and 4G)
 
@@ -132,13 +135,12 @@ GSM-850     824.2 – 848.8      869.2 – 893.8
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
-
+[^1]
 <summary>Goals of A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image0.png" alt="General Goals of A5/1" width="550">
 
 <summary>Registers Before A5/1</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image1.png" alt="Registers Before A5/1" width="550">
-
 
 <summary>General Information about Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image2.png" alt="General Information about Registers" width="550">
@@ -160,7 +162,7 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 2) We shift all the registers up by one and insert the new xored bit at index 0.
 
 3) We repeat this process for the entire 64-bit key; start with the least significant bit of each byte and go through the bytes linearly left to right.
-
+[^1]
 <summary>Insert Vector Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image5.png" alt="Insert Vector Into Registers" width="550">
 
@@ -182,7 +184,7 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 of two or more registers.
 6) Registers with the majority bit in the clock bit index have all their tapping bits xored together, are then shifted by one, and then have the new xored value placed at index 0. The same process as Step 1-3.
 7) We repeat this process 99 more times to mix the registers.
-
+[^1]
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image10.png" alt="Generate 114 bit RAND" width="550">
 
@@ -192,10 +194,6 @@ of two or more registers.
 
 11) Randomly generate a new Initialization Vector. We used java random with the first Initialization Vector acting as a seed.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
-
-# Notes / Interesting Information That Doesn't Fit Elsewhere
-
-1) A5/3 supports 384-bit frames when operating in GPRS/EDGE modes.[^20]
 
 # Resources
 
@@ -219,7 +217,7 @@ of two or more registers.
 
 [^10]: https://link.springer.com/chapter/10.1007/978-3-540-45146-4_35 <= A5/2 Downgrade Vulnerability
 
-[^11]: https://en.wikipedia.org/wiki/Digital_AMPS <= Competing Standard with GSM
+[^11]: https://en.wikipedia.org/wiki/Digital_AMPS <= Pre-GSM standard
 
 [^12]: https://www.ericsson.com/en/blog/2021/6/evolution-of-cryptographic-algorithms <= History of Modern Cellular Cryptography.
 
@@ -244,3 +242,11 @@ of two or more registers.
 [^22]: https://asecuritysite.com/symmetric/a5 <= Simulation of a5/1
 
 [^23]: https://733amir.github.io/a51-cipher-simulator/ <= partial simulation of a5/1
+
+[^24]: https://www.youtube.com/watch?v=8rPip6x0pUQ <= GSM unlock
+
+[^25]: https://en.wikipedia.org/wiki/CdmaOne
+
+[^26]: https://en.wikipedia.org/wiki/Verizon_(mobile_network)
+
+[^27]: https://www.pcmag.com/news/cdma-vs-gsm-whats-the-difference

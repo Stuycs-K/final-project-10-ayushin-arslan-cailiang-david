@@ -38,6 +38,10 @@ Did more research on GSM standard.
 
 Rewrote the algorithm using bitwise operations primarily. Added proper padding to the encryption and decryption algorithm. Edited the README to match correct features of the algorithm.
 
+### 6/4/2024
+
+Added citations to the presentation.
+
 ## Arslan Ayushin
 
 ### date x
