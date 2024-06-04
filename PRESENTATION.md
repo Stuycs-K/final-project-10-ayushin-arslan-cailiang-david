@@ -15,7 +15,8 @@ which makes each channel much more data dense. This allowed for *higher speed no
 
 GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
 
-One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard.[^26][^27]
+One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard. LTE started being rolled out in mass in 2010. By 2022, all major carriers
+have stopped supporting GSM in their networks.[^26][^27] 
 
 Improvement on GSM:[^8][^9]
 
