@@ -246,3 +246,7 @@ of two or more registers.
 [^24]: https://en.wikipedia.org/wiki/Verizon_(mobile_network)
 
 [^25]: https://www.pcmag.com/news/cdma-vs-gsm-whats-the-difference
+
+[^26]: https://github.com/0xh4di/GSMDecryption
+
+[^27]: https://brmlab.cz/project/gsm/deka/start
