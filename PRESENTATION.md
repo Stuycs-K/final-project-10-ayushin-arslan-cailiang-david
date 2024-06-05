@@ -66,7 +66,7 @@ This attack was then further optimized by Ekdahl and Johansson, Maximov et al., 
 less than one minute of computations, and a few seconds of known conversation".[^7]
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
-tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^20]
+tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^20][^26][^27]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
@@ -246,3 +246,7 @@ of two or more registers.
 [^24]: https://en.wikipedia.org/wiki/Verizon_(mobile_network)
 
 [^25]: https://www.pcmag.com/news/cdma-vs-gsm-whats-the-difference
+
+[^26]: https://www.youtube.com/watch?v=-nqLlY9UYqs
+
+[^27]: https://www.youtube.com/watch?v=-_jcGLlJTIk
