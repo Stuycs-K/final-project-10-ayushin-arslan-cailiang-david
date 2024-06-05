@@ -7,7 +7,7 @@ and Nordic Mobile Telephone (NMT) 450. But these earlier standards were built on
 making them significantly more costly to operate compared to GSM and other more modern communications standards.[^7][^3]
 
 An important part of GSM is narrowband *time division multiple accession* (TDMA), which allows multiple people to use the
-same band of radio frequencies simultaneous, by switching between connections rapidly. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.[^7]
+same band of radio frequencies simultaneous, by switching between connections rapidly every 4.615ms. This allows for higher throughput. This is allowed for by using digital techniques rather than analog techniques.[^7]
 
 In addition, GSM was *fully duplex* meaning uplink and downlink frequencies were different allowing you to simultaneously receive
 and transmit, which allows a lot more data to be sent. This need for additional frequencies was compensated for by the use of TDMA,
@@ -16,7 +16,7 @@ which makes each channel much more data dense. This allowed for *higher speed no
 GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
 
 One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard. LTE started being rolled out in mass in 2010. By 2022, all major carriers
-have stopped supporting GSM in their networks.[^26][^27] 
+have stopped supporting GSM in their networks.[^26][^27]
 
 Improvement on GSM:[^8][^9]
 
