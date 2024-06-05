@@ -48,3 +48,8 @@ info
 
 - added and fixed bugs in pipe stuff, still not working
 
+### 6/3/24
+
+- fixed ab tester, uses execlp and a script to encode/decode, but vector is same for every message for now
+- merged with encoder5
+
