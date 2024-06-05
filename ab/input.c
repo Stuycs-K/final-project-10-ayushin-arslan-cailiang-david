@@ -18,11 +18,11 @@ void err(int i, char*message){
 }
 
 int main(int argc, char* argv[]) {
-    setlinebuf(stdout);
+    // setlinebuf(stdout);
 
     fd_set read_fds;
 
-    if (argc < 3) {
+    if (argc < 4) {
         printf("args\n");
         exit(1);
     }
@@ -31,10 +31,17 @@ int main(int argc, char* argv[]) {
 
     int testout = open("testout.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
 
-    int pipe_read = open(pipe_location, O_RDONLY);
+    int pipe_read = open(pipe_location, O_RDONLY | O_NONBLOCK);
     char *testprint = malloc(BUFFER_SIZE);
     sprintf(testprint, "Opened pipe (input)\n");
     write(testout, testprint, BUFFER_SIZE);
+
+
+    char * write_pipe_location = argv[3];
+
+    int pipe_write = open(write_pipe_location, O_WRONLY);
+    printf("Opened pipe\n");
+
 
     while(1){
 
@@ -56,7 +63,33 @@ int main(int argc, char* argv[]) {
                 buff = strsep(&buff, "\n");
                 char *str = malloc(BUFFER_SIZE);
                 sprintf(str, "%s: '%s'\n", message_from, buff);
-                write(STDOUT_FILENO, str, BUFFER_SIZE);
+                // write(STDOUT_FILENO, str, BUFFER_SIZE);
+                
+                write(testout, str, BUFFER_SIZE);
+
+
+                // printf("Writing to pipe: %s (strlen %ld)\n", buff, strlen(buff));
+
+                pid_t p;
+                p = fork();
+                if (p == 0) {
+                    char *MODE = malloc(BUFFER_SIZE);
+                    if (strcmp(message_from, "A") == 0) {
+                        sprintf(MODE, "B->A");
+                    }
+                    else {
+                        sprintf(MODE, "A->B");
+                    }
+                    char *encode_this_location = "encode_this.dat";
+                    int encode_this = open(encode_this_location, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+                    write(encode_this, str, strlen(str) + 1);
+                    close(encode_this);
+                    // int execerr = execlp("bash", "bash", "encode.sh", str, MODE, write_pipe_location, NULL);
+                    int execerr = execlp("bash", "bash", "encode.sh", encode_this_location, MODE, write_pipe_location, NULL);
+                    err(execerr, "execlp error");
+                    exit(0);
+                }
+
             }
             // else {
             //     exit(0);
@@ -67,6 +100,9 @@ int main(int argc, char* argv[]) {
             int bytes = read(pipe_read, buff, BUFFER_SIZE);
 
             if (bytes) {
+                buff[strlen(buff)]=0;
+                buff = strsep(&buff, "\n");
+
                 // printf("%s read pipe %d bytes %ld strlen\n", message_from, bytes, strlen(buff));
                
                 // printf("%s read pipe %ld strlen\n", message_from, strlen(buff));
@@ -84,7 +120,19 @@ int main(int argc, char* argv[]) {
                     char *printmsg = malloc(BUFFER_SIZE);
                     sprintf(printmsg, "%s\n", buff);
                     write(testout, printmsg, BUFFER_SIZE);
-                    int execerr = execlp("bash", "bash", "print.sh", buff, NULL);
+                    char *MODE = malloc(BUFFER_SIZE);
+                    if (strcmp(message_from, "A") == 0) {
+                        sprintf(MODE, "B->A");
+                    }
+                    else {
+                        sprintf(MODE, "A->B");
+                    }
+                    // char *print_this_location = "print_this.dat";
+                    // int print_this = open(print_this_location, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+                    // write(print_this, buff, BUFFER_SIZE);
+                    // close(print_this);
+                    int execerr = execlp("bash", "bash", "print.sh", buff, MODE, NULL);
+                    // int execerr = execlp("bash", "bash", "print.sh", print_this_location, MODE, NULL);
                     err(execerr, "execlp error");
                     exit(0);
                 }

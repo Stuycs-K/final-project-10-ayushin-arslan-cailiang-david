@@ -21,11 +21,11 @@ public class test {
             line = stdin.readLine();
             while (line != null) {
                 if (args.length == 1) {
-                    if (args[0].equals("encode")) {
-                        System.out.println("(encoded) " + line);
+                    if (args[0].equals("A->B")) {
+                        System.out.println("(XOR A->B) " + line);
                     }
                     else {
-                        System.out.println("(decoded) " + line);
+                        System.out.println("(XOR B->A) " + line);
                     }
                 }
                 line = stdin.readLine();
