@@ -286,6 +286,7 @@ key */
 		// printbinary(R2, 22);
 		// printf("R3: %x\n", R3);
 		// printbinary(R3, 23);
+		// printf("\n");
 	}
 
 	// printf("after reading frame number\n");
@@ -306,26 +307,25 @@ key */
 	 * rule from now on. */
 	for (i=0; i<100; i++) {
 		clock();
-		// if ( i < 4 ) {
-		// 	printf("after %d clocks\n", i+1);
-		// 	printf("R1: %x\n", R1);
-		// 	printbinary(R1, 19);
-		// 	printf("R2: %x\n", R2);
-		// 	printbinary(R2, 22);
-		// 	printf("R3: %x\n", R3);
-		// 	printbinary(R3, 23);
-
-		// 	printf("\n");
-		// }
+		if ( i < 10 ) {
+			printf("after %d clocks\n", i+1);
+			printf("R1: %x\n", R1);
+			printbinary(R1, 19);
+			printf("R2: %x\n", R2);
+			printbinary(R2, 22);
+			printf("R3: %x\n", R3);
+			printbinary(R3, 23);
+ 			printf("\n");
+		 }
 	}
 
-	// printf("after 100 clocks\n");
-	// printf("R1: %x\n", R1);
-	// printbinary(R1, 19);
-	// printf("R2: %x\n", R2);
-	// printbinary(R2, 22);
-	// printf("R3: %x\n", R3);
-	// printbinary(R3, 23);
+	printf("after 100 clocks\n");
+	printf("R1: %x\n", R1);
+	printbinary(R1, 19);
+	printf("R2: %x\n", R2);
+	printbinary(R2, 22);
+	printf("R3: %x\n", R3);
+	printbinary(R3, 23);
 
 	// printf("\n");
 
@@ -350,30 +350,19 @@ void run(byte AtoBkeystream[], byte BtoAkeystream[]) {
 	for (i=0; i<114; i++) {
 		clock();
 		AtoBkeystream[i/8] |= getbit() << (7-(i&7));
-	// 	if (i == 1) {
-	// 	printf("one loop\n");
-	// 	printf("R1: %x\n", R1);
-	// 	printbinary(R1, 19);
-	// 	printf("R2: %x\n", R2);
-	// 	printbinary(R2, 22);
-	// 	printf("R3: %x\n", R3);
-	// 	printbinary(R3, 23);
-	// 	printf("Output: %x\n", getbit());
-	// 	printf("\n");
-	// }
-// 	if (i == 2) {
-// 	printf("two loop\n");
-// 	printf("R1: %x\n", R1);
-// 	printbinary(R1, 19);
-// 	printf("R2: %x\n", R2);
-// 	printbinary(R2, 22);
-// 	printf("R3: %x\n", R3);
-// 	printbinary(R3, 23);
-// 	printf("Output: %x\n", getbit());
-// 	printf("\n");
-// }
-// if (i == 5) {
-// printf("five loop\n");
+		if (i < 20) {
+		printf("one loop\n");
+		printf("R1: %x\n", R1);
+		printbinary(R1, 19);
+		printf("R2: %x\n", R2);
+		printbinary(R2, 22);
+		printf("R3: %x\n", R3);
+		printbinary(R3, 23);
+		printf("Output: %x\n", getbit());
+		printf("\n");
+	}
+// if (i == 113) {
+// printf("113 loop\n");
 // printf("R1: %x\n", R1);
 // printbinary(R1, 19);
 // printf("R2: %x\n", R2);
@@ -383,17 +372,6 @@ void run(byte AtoBkeystream[], byte BtoAkeystream[]) {
 // printf("Output: %x\n", getbit());
 // printf("\n");
 // }
-if (i == 113) {
-printf("113 loop\n");
-printf("R1: %x\n", R1);
-printbinary(R1, 19);
-printf("R2: %x\n", R2);
-printbinary(R2, 22);
-printf("R3: %x\n", R3);
-printbinary(R3, 23);
-printf("Output: %x\n", getbit());
-printf("\n");
-}
 	}
 
 	/* Generate 114 bits of keystream for the
@@ -492,10 +470,10 @@ frame = str_to_hex(f);
 
 int main( int argc, char * argv [] ) {
 
-	//  char *testkey="1223456789ABCDEF";
+	  char *testkey="1223456789ABCDEF";
 	// char *testkey="4E2F4D7C1EB88B3A"; // from interactive sim
 	// 01110010 11110100 10110010 00111110 01111000 00011101 11010001 01011100
-	char *testkey="72F4B23E781DD15C"; // reversed version
+	//char *testkey="72F4B23E781DD15C"; // reversed version
 	// char *frame="133";
 	char *frame = "134";
 	if (argc==1)
