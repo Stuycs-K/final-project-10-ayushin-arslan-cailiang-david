@@ -54,3 +54,14 @@ dkms.conf
 
 
 *.class
+
+
+ab/testout.txt
+ab/input_a
+ab/A_to_B
+ab/B_to_A
+ab/encode_encoded.txt
+ab/encode_this.dat
+ab/print_decoded.txt
+ab/vector_already_used
+
