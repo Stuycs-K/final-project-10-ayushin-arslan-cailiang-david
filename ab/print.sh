@@ -21,7 +21,7 @@ printf "Decoded:\n" > /dev/tty
 
 # echo "$1" > $INPUT_FILE
 # java encoder $KEY $INITIALIZATION_VECTOR $INPUT_FILE $OUTPUT_FILE > /dev/null
-make -C .. encode ARGS="$KEY $INITIALIZATION_VECTOR ab/$INPUT_FILE ab/$OUTPUT_FILE" > /dev/null
+make -C .. decode ARGS="$KEY $INITIALIZATION_VECTOR ab/$INPUT_FILE ab/$OUTPUT_FILE" > /dev/null
 cat $OUTPUT_FILE > /dev/tty
 
 printf "\n\n" > /dev/tty
