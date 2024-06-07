@@ -87,3 +87,11 @@ Did presentation prep.
 
 - fixed ab tester, uses execlp and a script to encode/decode, but vector is same for every message for now
 - merged with encoder5
+
+### 6/5/24
+
+- added links to info to presentation about cracking a5/1
+
+### 6/7/24
+
+- working on algorithm presentation in class
