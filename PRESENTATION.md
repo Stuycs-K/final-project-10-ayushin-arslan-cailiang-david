@@ -146,6 +146,7 @@ The first 114 bits of keystream are generated for the A->B transmission, and 114
 We want to use a 64 bit key and a 22 bit initialization vector (frame) to generate the 228 pseudorandom keystream bits. When we run out of keystream, change the initialization vector to generate more.
 
 To encode/decode, XOR the keystream with the plaintext.
+
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image0.png" alt="General Goals of A5/1" width="550">
 
 <summary>Registers Before A5/1</summary>
@@ -154,12 +155,14 @@ The algorithm uses three "Linear Feedback Shift Registers" (LFSR) of 19, 22, 23 
 In a clock cycle, the tapping bits are all XORed and the resulting bit is inserted at index 0.
 
 The rest of the bits are shifted over and the last bit is thrown out.
+
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image1.png" alt="Registers Before A5/1" width="550">
 
 <summary>General Information about Registers</summary>
 The next input bit of the register is the XOR of its tapped bits
 
 The clocking bits determine which registers will be clocked
+
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image2.png" alt="General Information about Registers" width="550">
 
 <summary>Clock Once</summary>
