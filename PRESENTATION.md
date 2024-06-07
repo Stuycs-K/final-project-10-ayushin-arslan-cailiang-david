@@ -257,7 +257,3 @@ of two or more registers.
 [^26]: https://www.youtube.com/watch?v=-nqLlY9UYqs
 
 [^27]: https://www.youtube.com/watch?v=-_jcGLlJTIk
-
-[^28]: https://github.com/0xh4di/GSMDecryption
-
-[^29]: https://brmlab.cz/project/gsm/deka/start

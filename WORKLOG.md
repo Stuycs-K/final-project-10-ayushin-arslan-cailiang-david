@@ -42,6 +42,10 @@ Rewrote the algorithm using bitwise operations primarily. Added proper padding t
 
 Added citations to the presentation.
 
+### 6/7/2024
+
+Did presentation prep.
+
 ## Arslan Ayushin
 
 ### 5/22/24
@@ -83,4 +87,3 @@ Added citations to the presentation.
 
 - fixed ab tester, uses execlp and a script to encode/decode, but vector is same for every message for now
 - merged with encoder5
-
