@@ -32,15 +32,15 @@ Improvement on GSM:[^8][^9]
 
 # Security of GSM
 
-The four core GSM algorithms are:[^2][^22]
+The four core GSM algorithms are:[^2][^21]
 
-A3		authentication algorithm (based on COMP128 - Developed Before 1998)[^18]
+A3		authentication algorithm (based on COMP128 - Developed Before 1998)[^17]
 
 A5/1	"strong" over-the-air voice-privacy algorithm (Developed in 1987)[^4]
 
-A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)[^5][^19]
+A5/2	"weak" over-the-air voice-privacy algorithm   (Developed in 1987)[^5][^18]
 
-A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)[^18]
+A8		voice-privacy key generation algorithm (based on COMP128 - Developed Before 1998)[^17]
 
 # Vulnerabilities in GSM
 
