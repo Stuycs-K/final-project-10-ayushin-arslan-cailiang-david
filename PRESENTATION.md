@@ -15,8 +15,8 @@ which makes each channel much more data dense. This allowed for *higher speed no
 
 GSM was also one of the first protocols to *encrypt* its communications streams.[^7]
 
-One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.[^24][^25] GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard. LTE started being rolled out in mass in 2010. By 2022, all major carriers
-have stopped supporting GSM in their networks.[^26][^27]
+One of the major alternatives to GSM is CDMA. CDMA was used by Verizon, Sprint, and other smaller carriers. GSM was used by AT&T, Sprint, and other smaller carriers.GSM phones couldn't be used CDMA networks and vice versa. Both of these technologies would later be obsolete with the introduction of LTE, which is the current standard. LTE started being rolled out in mass in 2010. By 2022, all major carriers
+have stopped supporting GSM in their networks.[^22][^23][^24][^25]
 
 Improvement on GSM:[^8][^9]
 
@@ -111,7 +111,7 @@ A SIM card often also contains additional user authentication information and a 
 A IMSI-Catcher is a eavesdropping device used to intercept network traffic and get location information of subscribers by being a fake
 cell tower. 3G and beyond has protection against this through the use of mutual authentication. But GSM doesn't have this protection.
 Meaning that if you are able to degrade LTE and 3G communications enough, you may be able to force a device to use GSM, which is more
-venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.[^21]
+venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.[^21][^26][^27]
 
 The units that are capable of doing this are exclusively active units, which act as fully functionally cell towers. Passive units, on the
  other hand, act a lot more like pure listening devices, even though some passive units are capable of sending out limited commands to
@@ -140,7 +140,7 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 <summary>Goals of A5/1</summary>
 Your phone wants to communicate with the cell tower. It uses two channels (uplink and downlink).
 A5/1 is a stream cipher:
-The first 114 bits of keystream are generated for the A->B transmission, and 114 bits for the B->A direction. 
+The first 114 bits of keystream are generated for the A->B transmission, and 114 bits for the B->A direction.
 
 We want to use a 64 bit key and a 22 bit initialization vector (frame) to generate the 228 pseudorandom keystream bits. When we run out of keystream, change the initialization vector to generate more.
 To encode/decode, XOR the keystream with the plaintext.
