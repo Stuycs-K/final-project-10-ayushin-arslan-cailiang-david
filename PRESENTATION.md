@@ -49,7 +49,7 @@ The algorithm turned out to be so weak that it was possible to crack it in real 
 
 In 2003, Elad Barkan, Eli Biham and Nathan Keller found a vulnerability in error correction code that allowed a ciphertext-only
 attack. A ciphertext-only attack would allow someone who only has access to a bunch ciphertext to crack the cipher. They also
-found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.[^7][^10]
+found a way to force A5/2 capable device to use A5/2 over A5/1, making the other vulnerability they found extremely powerful.[^7][^10][^5]
 
 In 2006, A5/2 was banned from implementation in new devices. All existing devices capable of using A5/1 were forced to use A5/1
 from this point forward. All devices only capable of using A5/2 were forced to use a unencrypted connection, which isn't ideal.
@@ -60,30 +60,30 @@ That being said, A5/1 is also pretty weak. It just wasn't completely neutered by
 In 2000, Alex Biryukov, Adi Shamir and David Wagner figured out that you cryptanalyze A5/1 in real time using a time-memory tradeoff
 attack. The setups allows an attacker to reconstruct the key in one second from two minutes of known plaintext or in several minutes
 from two seconds of known plain text, but he must first complete an expensive preprocessing stage which requires 248 steps to compute
-around 300 GB of data.[^7][^5]
+around 300 GB of data.[^7][^4]
 
 This attack was then further optimized by Ekdahl and Johansson, Maximov et al., and Elad Barkan and Eli Biham so that the attack requires
 less than one minute of computations, and a few seconds of known conversation".[^7]
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
-tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^20][^26][^27]
+tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^27]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
 output. COMP128 is considered a hashing algorithm as it is extremely difficult to go back unless you already know both parts: the key and
 the RAND. The RAND is a challenge code sent from the cell tower. There were 3 versions of the algorithm named -1, -2, and -3. -1 is
 considered extremely weak but -2 and -3 are considered weak. AES based algorithms have replaced the COMP128 algorithms almost completely.
-The COMP128 algorithm's main problem is the small output and weak diffusion.[^16]
+The COMP128 algorithm's main problem is the small output and weak diffusion.[^7][^17]
 
 # Confidentiality in GSM and GSM-derived protocols (aka most modern protocols EDGE, 3G, and 4G)
 
-Note: 5G uses more complex methods to maintain confidentiality.[]
+Note: 5G uses more complex methods to maintain confidentiality.
 
 GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit
  country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
 International Mobile Equipment Identity (IMEI) number which identifies a phone or a Integrated Circuit Card Identifier (ICCID) number
  which identifies a SIM card. A Mobile Station International Subscriber Directory (MSSIDN) number is simply your whole phone number.
- IMEI is generated using a Type Allocation Code (TAC), which is managed by the GMS Association.[^13]
+ IMEI is generated using a Type Allocation Code (TAC), which is managed by the GMS Association.[^12][^13]
 
 Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI)
  is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related
@@ -111,22 +111,22 @@ A SIM card often also contains additional user authentication information and a 
 A IMSI-Catcher is a eavesdropping device used to intercept network traffic and get location information of subscribers by being a fake
 cell tower. 3G and beyond has protection against this through the use of mutual authentication. But GSM doesn't have this protection.
 Meaning that if you are able to degrade LTE and 3G communications enough, you may be able to force a device to use GSM, which is more
-venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.[^21][^26][^27]
+venerable to this attack. Advanced IMSI-Catchers do exist that can fake the mutual authentication step as well.[^20][^26]
 
 The units that are capable of doing this are exclusively active units, which act as fully functionally cell towers. Passive units, on the
  other hand, act a lot more like pure listening devices, even though some passive units are capable of sending out limited commands to
- mobile devices.[^21]
+ mobile devices.[^20]
 
 # DVB-T
 
 DVB-T is a satellite communications protocol meant for TV. The receivers for this standard is extremely common and many of them are able
 to operate on frequencies not used by satellite TV. Many of them also tend to be software-defined meaning they don't decode in hardware
 but rather than software, allowing them to work with many communications protocols such as GSM. These devices allow for the assembly of
-a purely passive IMSI-catcher for less than $50.[^15]
+a purely passive IMSI-catcher for less than $50.[^14]
 
 # Additional Technical Specifications of GSM
 
-The two GSM radio channels commonly used in the US:[^16]
+The two GSM radio channels commonly used in the US:[^15]
 
 GSM Band    Uplink (MHz)       Downlink (MHz)
 
