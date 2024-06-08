@@ -137,7 +137,7 @@ PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 # How A5/1 functions
 
 
-<summary>Goals of A5/1</summary>
+<summary>Goals of A5/1 [^1]</summary>
 Your phone wants to communicate with the cell tower. It uses two channels (uplink and downlink).
 
 A5/1 is a stream cipher:
@@ -147,7 +147,6 @@ We want to use a 64 bit key and a 22 bit initialization vector (frame) to genera
 
 To encode/decode, XOR the keystream with the plaintext.
 
-[^1]
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image0.png" alt="General Goals of A5/1" width="550">
 
 <summary>Registers Before A5/1</summary>
@@ -185,7 +184,6 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 
 3) We repeat this process for the entire 64-bit key; start with the least significant bit of each byte and go through the bytes linearly left to right.
 
-[^1]
 <summary>Insert Vector Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image5.png" alt="Insert Vector Into Registers" width="550">
 
@@ -208,7 +206,6 @@ of two or more registers.
 6) Registers with the majority bit in the clock bit index have all their tapping bits xored together, are then shifted by one, and then have the new xored value placed at index 0. The same process as Step 1-3.
 7) We repeat this process 99 more times to mix the registers.
 
-[^1]
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image10.png" alt="Generate 114 bit RAND" width="550">
 
