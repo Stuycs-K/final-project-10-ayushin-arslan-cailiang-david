@@ -130,11 +130,11 @@ a purely passive IMSI-catcher for less than $50.[^14]
 
 The two GSM radio channels commonly used in the US:[^15]
 
-GSM Band    Uplink (MHz)       Downlink (MHz)
+GSM Band          Uplink (MHz)          Downlink (MHz)
 
-GSM-850     824.2 – 848.8      869.2 – 893.8
+GSM-850           824.2 – 848.8         869.2 – 893.8
 
-PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
+PCS-1900 	        1850.2 – 1909.8 	     1930.2 – 1989.8
 
 # How A5/1 functions [^1]
 
@@ -211,11 +211,11 @@ of two or more registers.
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image10.png" alt="Generate 114 bit RAND" width="550">
 
-8) Perform Steps 7-9 again.  Save and xor the last bit of *all* the registers, not just the ones that got rotated.
+8) Perform Steps 7-9 again. Save and xor the last bit of *all* the registers, not just the ones that got rotated.
 9) Repeat Step 10, another 227 times so you get a 228 bit key stream.
 10) Xor this 228 bit key stream with the first 228 bits of your plaintext.
 
-11) Randomly generate a new Initialization Vector. We used java random with the first Initialization Vector acting as a seed.
+11) Generate a new Initialization Vector by adding 1 to the current Initialization Vector.
 12) Repeat Step 1-11 until your entire plaintext is encrypted.
 
 # Resources
