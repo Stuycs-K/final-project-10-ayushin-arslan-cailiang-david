@@ -11,10 +11,10 @@ decoder5.class: decoder5.java
 	@javac decoder5.java
 
 setupA:
-	@./ab/setupA.sh
+	@cd ab && ./setupA.sh
 
 setupB:
-	@./ab/setupB.sh
+	@cd ab && ./setupB.sh
 
 clean:
 	@rm -f *.class

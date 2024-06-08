@@ -57,8 +57,8 @@ int main(int argc, char* argv[]) {
 
         //if standard in, use fgets
         if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-            char *read = fgets(buff, BUFFER_SIZE, stdin);
-            if (read) {
+            char *fread = fgets(buff, BUFFER_SIZE, stdin);
+            if (fread) {
                 buff[strlen(buff)]=0;
                 buff = strsep(&buff, "\n");
                 char *str = malloc(BUFFER_SIZE);
@@ -84,8 +84,15 @@ int main(int argc, char* argv[]) {
                     int encode_this = open(encode_this_location, O_CREAT | O_TRUNC | O_WRONLY, 0644);
                     write(encode_this, str, strlen(str) + 1);
                     close(encode_this);
+
+                    char *vector_location = "vector_already_used";
+                    int vector_file = open(vector_location, O_RDONLY, 0644);
+                    char *frame = malloc(BUFFER_SIZE);
+                    read(vector_file, frame, BUFFER_SIZE);
+                    close(vector_file);
+                    
                     // int execerr = execlp("bash", "bash", "encode.sh", str, MODE, write_pipe_location, NULL);
-                    int execerr = execlp("bash", "bash", "encode.sh", encode_this_location, MODE, write_pipe_location, NULL);
+                    int execerr = execlp("bash", "bash", "encode.sh", encode_this_location, MODE, write_pipe_location, frame, NULL);
                     err(execerr, "execlp error");
                     exit(0);
                 }
@@ -131,7 +138,18 @@ int main(int argc, char* argv[]) {
                     // int print_this = open(print_this_location, O_CREAT | O_TRUNC | O_WRONLY, 0644);
                     // write(print_this, buff, BUFFER_SIZE);
                     // close(print_this);
-                    int execerr = execlp("bash", "bash", "print.sh", buff, MODE, NULL);
+                    char *vector_location = "vector_already_used";
+                    int vector_file = open(vector_location, O_RDONLY, 0644);
+                    char *frame = malloc(BUFFER_SIZE);
+                    read(vector_file, frame, BUFFER_SIZE);
+                    close(vector_file);
+
+                    char *newframe = malloc(BUFFER_SIZE);
+                    sprintf(newframe, "%06d", atoi(frame) + 1);
+                    vector_file = open(vector_location, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+                    write(vector_file, newframe, BUFFER_SIZE);
+                    close(vector_file);
+                    int execerr = execlp("bash", "bash", "print.sh", buff, MODE, frame, NULL);
                     // int execerr = execlp("bash", "bash", "print.sh", print_this_location, MODE, NULL);
                     err(execerr, "execlp error");
                     exit(0);
