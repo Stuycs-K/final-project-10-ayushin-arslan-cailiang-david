@@ -135,7 +135,7 @@ GSM-850     824.2 – 848.8      869.2 – 893.8
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
 # How A5/1 functions
-[^1]
+
 
 <summary>Goals of A5/1</summary>
 Your phone wants to communicate with the cell tower. It uses two channels (uplink and downlink).
@@ -146,7 +146,7 @@ The first 114 bits of keystream are generated for the A->B transmission, and 114
 We want to use a 64 bit key and a 22 bit initialization vector (frame) to generate the 228 pseudorandom keystream bits. When we run out of keystream, change the initialization vector to generate more.
 
 To encode/decode, XOR the keystream with the plaintext.
-
+[^1]
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image0.png" alt="General Goals of A5/1" width="550">
 
 <summary>Registers Before A5/1</summary>
