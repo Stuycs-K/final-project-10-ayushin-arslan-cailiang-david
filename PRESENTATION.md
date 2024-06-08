@@ -88,11 +88,11 @@ International Mobile Equipment Identity (IMEI) number which identifies a phone o
 Your IMSI is transmitted as infrequently as possible as to prevent tracking and identification of the user. Instead a Temporary Mobile Subscriber Identity (TMSI)
  is sent, if possible. Sometimes the IMSI itself has to be sent to re-establish communications after a desynchronization in security related
  information like challenge codes. It also has to be sent when a device is first connect to a network and needs to receive up to date security
- information from the nearest cell tower.[^14]
+ information from the nearest cell tower.[^13]
 
 # SIM Cards
 
-A Subscriber Identity Module (SIM) contains the following:[^17]
+A Subscriber Identity Module (SIM) contains the following:[^16]
 
 1) security authentication and cipher information. (eg: 128-bit authentication key)
 
