@@ -24,7 +24,7 @@ Improvement on GSM:[^8][^9]
 
 2. Evolved EDGE
 
-3. 3G (Switch to A5/3 "KASUMI" Encryption)
+3. 3G (Switch to A5/3 "KASUMI" Encryption)[^6]
 
 4. 4G (AES-Based Encryption Only)
 
@@ -67,6 +67,8 @@ less than one minute of computations, and a few seconds of known conversation".[
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
 tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^19]
+
+A popular tool, which is capable of using these rainbow tables to decrypt communications, is Kraken.[^27]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
