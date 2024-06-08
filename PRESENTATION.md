@@ -79,7 +79,7 @@ The COMP128 algorithm's main problem is the small output and weak diffusion.[^7]
 
 # Confidentiality in GSM and GSM-derived protocols (aka most modern protocols EDGE, 3G, and 4G)
 
-Note: 5G uses more complex methods to maintain confidentiality.
+Note: 5G uses more complex methods to maintain confidentiality.[^28]
 
 GSM uses a International mobile subscriber identity (IMSI) number to identify a subscriber. It is normally a 15 digit number, with a two or three digit
  country code, a three digit service provider code, and a nine or ten digit subscriber code. This is different from a
@@ -273,3 +273,5 @@ of two or more registers.
 [^26]: https://www.youtube.com/watch?v=-nqLlY9UYqs
 
 [^27]: https://www.youtube.com/watch?v=-_jcGLlJTIk
+
+[^28]: https://www.sharetechnote.com/html/5G/5G_Security.html
