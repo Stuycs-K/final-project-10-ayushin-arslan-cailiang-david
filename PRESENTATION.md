@@ -134,10 +134,10 @@ GSM-850     824.2 – 848.8      869.2 – 893.8
 
 PCS-1900 	  1850.2 – 1909.8 	 1930.2 – 1989.8
 
-# How A5/1 functions
+# How A5/1 functions [^1]
 
 
-<summary>Goals of A5/1 [^1]</summary>
+<summary>Goals of A5/1</summary>
 Your phone wants to communicate with the cell tower. It uses two channels (uplink and downlink).
 
 A5/1 is a stream cipher:
