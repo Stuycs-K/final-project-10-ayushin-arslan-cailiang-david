@@ -1,17 +1,17 @@
 # javac test.java
 # javac test2.java
 # javac encoder.java
-make -C .. encoder.class > /dev/null
+make -C .. encoder5.class > /dev/null
 
 AtoB="A_to_B"
 BtoA="B_to_A"
 
 if !([ -p $AtoB ]); then
-    echo "Creating pipe";
+    # echo "Creating pipe";
     mkfifo $AtoB;
 fi
 if !([ -p $BtoA ]); then
-    echo "Creating pipe";
+    # echo "Creating pipe";
     mkfifo $BtoA;
 fi
 
@@ -26,6 +26,7 @@ touch $vector
 
 KEY="72F4B23E781DD15C"
 INITIALIZATION_VECTOR="000134"
+echo -n $INITIALIZATION_VECTOR > $vector
 
 # ./input_a $BtoA A | java test encode > $AtoB
 

@@ -1,8 +1,9 @@
 # javac encoder.java
-make -C .. encoder.class > /dev/null
+make -C .. encoder5.class > /dev/null
 
 KEY="72F4B23E781DD15C"
-INITIALIZATION_VECTOR="000134"
+INITIALIZATION_VECTOR="$4"
+echo $INITIALIZATION_VECTOR
 
 # INPUT_FILE="encode_plain.txt"
 INPUT_FILE="$1"

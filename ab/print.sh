@@ -1,10 +1,10 @@
 # javac test.java
 # javac test2.java
 # javac encoder.java
-make -C .. encoder.class > /dev/null
+make -C .. decoder5.class > /dev/null
 
 KEY="72F4B23E781DD15C"
-INITIALIZATION_VECTOR="000134"
+INITIALIZATION_VECTOR="$3"
 
 # INPUT_FILE="print_encoded.txt"
 INPUT_FILE="$1"
