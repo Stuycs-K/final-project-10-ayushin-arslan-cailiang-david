@@ -66,7 +66,7 @@ This attack was then further optimized by Ekdahl and Johansson, Maximov et al., 
 less than one minute of computations, and a few seconds of known conversation".[^7]
 
 In December 2009, The A5/1 Cracking Project attack tables were released by Chris Paget and Karsten Nohl. These tables included rainbow
-tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^27]
+tables and were 1.7TB in size. These rainbow tables allowed you to avoid computations 20% of the time. [^7][^19]
 
 ------
 In 1998, COMP128 was reversed engineered and fully published online. COMP128 takes a 128-bit key and a 128-bit RAND to produce a 128-bit
