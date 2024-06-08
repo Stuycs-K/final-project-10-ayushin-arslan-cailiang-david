@@ -146,6 +146,7 @@ The first 114 bits of keystream are generated for the A->B transmission, and 114
 We want to use a 64 bit key and a 22 bit initialization vector (frame) to generate the 228 pseudorandom keystream bits. When we run out of keystream, change the initialization vector to generate more.
 
 To encode/decode, XOR the keystream with the plaintext.
+
 [^1]
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image0.png" alt="General Goals of A5/1" width="550">
 
@@ -183,6 +184,7 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 2) We shift all the registers up by one and insert the new xored bit at index 0.
 
 3) We repeat this process for the entire 64-bit key; start with the least significant bit of each byte and go through the bytes linearly left to right.
+
 [^1]
 <summary>Insert Vector Into Registers</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image5.png" alt="Insert Vector Into Registers" width="550">
@@ -205,6 +207,7 @@ For LFSR3, we xor the first bit of the key with bits from index 7, 20, 21, and 2
 of two or more registers.
 6) Registers with the majority bit in the clock bit index have all their tapping bits xored together, are then shifted by one, and then have the new xored value placed at index 0. The same process as Step 1-3.
 7) We repeat this process 99 more times to mix the registers.
+
 [^1]
 <summary>Generate 114 bit RAND</summary>
 <img src="https://github.com/Stuycs-K/final-project-10-ayushin-arslan-cailiang-david/blob/main/images/Image10.png" alt="Generate 114 bit RAND" width="550">
