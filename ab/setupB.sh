@@ -26,6 +26,7 @@ touch $vector
 
 KEY="72F4B23E781DD15C"
 INITIALIZATION_VECTOR="000134"
+echo -n $INITIALIZATION_VECTOR > $vector
 
 # ./input_a $AtoB B | java test encode > $BtoA
 
