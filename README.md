@@ -46,10 +46,22 @@ ______
   Sample: make decode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"
 
   Sample: make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"
+____
 
-3) Read PRESENTATION.md for History on GSM and A5/1
+3) 2-Way Communications Demo
 
-4) Watch Video: https://drive.google.com/file/d/17sF_GEx2Tu6kE0JtfZXqcQ4auktd-bMo/view?usp=sharing
+  1) Create two terminal windows
+  2) cd into /ab for both windows
+  3) In one of the terminal windows, run ./setupA.sh
+  4) In the other terminal window, run ./setupB.sh
+  5) Type messages into one of the terminal window.
+  6) Go to the other terminal window to see the encrypted message that was sent and the decrypted message.
+
+  Note: The algorithm works on large messages as well. It will automatically break large messages into 114 bit segments. The messages are treated like files.
+
+4) Read PRESENTATION.md for History on GSM and A5/1
+
+5) Watch Video: https://drive.google.com/file/d/17sF_GEx2Tu6kE0JtfZXqcQ4auktd-bMo/view?usp=sharing
 ______
 Testing:
 

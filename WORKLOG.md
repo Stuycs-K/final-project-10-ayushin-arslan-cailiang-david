@@ -34,13 +34,17 @@ Got algorithm to work with reference algorithm.
 
 Did more research on GSM standard.
 
-### 6/1/2024
+### 5/31/2024
 
 Rewrote the algorithm using bitwise operations primarily. Added proper padding to the encryption and decryption algorithm. Edited the README to match correct features of the algorithm.
 
-### 6/4/2024
+### 6/3/2024
 
 Added citations to the presentation.
+
+### 6/5/2024
+
+Continue working on presentation.
 
 ### 6/7/2024
 
