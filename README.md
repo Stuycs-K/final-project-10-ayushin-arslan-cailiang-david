@@ -50,7 +50,8 @@ ____
 
 3) 2-Way Communications Demo
 
-    1) Create two terminal windows
+    1) Create two terminal windows.
+    2) Go to our home directory for both terminal windows.
     3) In one of the terminal windows, run `make setupA`
     4) In the other terminal window, run `make setupB`
     5) Type messages into one of the terminal window.
