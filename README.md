@@ -65,8 +65,8 @@ ____
 ______
 Testing:
 
-make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"; make decode ARGS="1223456789ABCDEF 000133 output.dat decrypt.dat"; diff input.dat decrypt.dat
+`make encode ARGS="1223456789ABCDEF 000133 input.dat output.dat"; make decode ARGS="1223456789ABCDEF 000133 output.dat decrypt.dat"; diff input.dat decrypt.dat`
 
-make encode ARGS="4E2F4D7C1EB88B3A 000134 input1 output.dat btoa"; make decode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"; diff input1 decrypt.dat
+`make encode ARGS="4E2F4D7C1EB88B3A 000134 input1 output.dat btoa"; make decode ARGS="4E2F4D7C1EB88B3A 000134 output.dat decrypt.dat btoa"; diff input1 decrypt.dat`
 
-make encode ARGS="72F4B23E781DD15C 0CF1D4 makefile output.dat atob dump"; make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"; diff makefile decrypt.dat
+`make encode ARGS="72F4B23E781DD15C 0CF1D4 makefile output.dat atob dump"; make decode ARGS="72F4B23E781DD15C 0CF1D4 output.dat decrypt.dat atob"; diff makefile decrypt.dat`
