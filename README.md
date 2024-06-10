@@ -51,9 +51,8 @@ ____
 3) 2-Way Communications Demo
 
     1) Create two terminal windows
-    2) cd into `/ab` for both windows
-    3) In one of the terminal windows, run `./setupA.sh`
-    4) In the other terminal window, run `./setupB.sh`
+    3) In one of the terminal windows, run `make setupA`
+    4) In the other terminal window, run `make setupB`
     5) Type messages into one of the terminal window.
     6) Go to the other terminal window to see the encrypted message that was sent and the decrypted message.
 
